@@ -25,20 +25,7 @@ var decToBin = function(digit){
   }
     return van.join('');
 }
-hexArray = ['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 var decToHex = function(digit) {
-   // var newArr = parseInt(digit,16);
-   var newArr = (parseInt(digit)).toString(16);
-  // console.log('hey');
-  // var whole,
-  //     reminder;
-  // // while (digit>=0) {
-  //   whole = digit/16;
-  //   reminder = digit%16;
-  // // }
-  // var newArr = whole.map(function(elem){
-  //   return whole.indexOf(hexArray);
-  //
-  // });
-  console.log(newArr);
+   var hex = (parseInt(digit)).toString(16);
+    return hex;
 }
