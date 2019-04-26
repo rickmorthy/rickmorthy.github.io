@@ -1,0 +1,281 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'popper.js',
+1 verbose cli   '--save' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData popper.js
+8 silly fetchDirectoryPackageData popper.js
+9 silly install normalizeTree
+10 silly loadCurrentTree Finishing
+11 silly loadIdealTree Starting
+12 silly install loadIdealTree
+13 silly cloneCurrentTree Starting
+14 silly install cloneCurrentTreeToIdealTree
+15 silly cloneCurrentTree Finishing
+16 silly loadShrinkwrap Starting
+17 silly install loadShrinkwrap
+18 silly loadShrinkwrap Finishing
+19 silly loadAllDepsIntoIdealTree Starting
+20 silly install loadAllDepsIntoIdealTree
+21 silly resolveWithNewModule popperjs-monorepo@0.0.0 checking installable status
+22 silly cache add args [ 'popper.js', null ]
+23 verbose cache add spec popper.js
+24 silly cache add parsed spec Result {
+24 silly cache add   raw: 'popper.js',
+24 silly cache add   scope: null,
+24 silly cache add   name: null,
+24 silly cache add   rawSpec: 'popper.js',
+24 silly cache add   spec: '/home/brutus/repo/rickmorthy.github.io/js/popper.js',
+24 silly cache add   type: 'directory' }
+25 verbose addLocalDirectory /home/brutus/.npm/popperjs-monorepo/0.0.0/package.tgz not in flight; packing
+26 info lifecycle popperjs-monorepo@0.0.0~prepublish: popperjs-monorepo@0.0.0
+27 silly lifecycle popperjs-monorepo@0.0.0~prepublish: no script for prepublish, continuing
+28 verbose tar pack [ '/home/brutus/.npm/popperjs-monorepo/0.0.0/package.tgz',
+28 verbose tar pack   '/home/brutus/repo/rickmorthy.github.io/js/popper.js' ]
+29 verbose tarball /home/brutus/.npm/popperjs-monorepo/0.0.0/package.tgz
+30 verbose folder /home/brutus/repo/rickmorthy.github.io/js/popper.js
+31 verbose addLocalTarball adding from inside cache /home/brutus/.npm/popperjs-monorepo/0.0.0/package.tgz
+32 silly cache afterAdd popperjs-monorepo@0.0.0
+33 verbose afterAdd /home/brutus/.npm/popperjs-monorepo/0.0.0/package/package.json not in flight; writing
+34 verbose afterAdd /home/brutus/.npm/popperjs-monorepo/0.0.0/package/package.json written
+35 silly loadAllDepsIntoIdealTree Finishing
+36 silly idealTree:prePrune js
+36 silly idealTree:prePrune └── popperjs-monorepo@0.0.0
+37 silly loadIdealTree Finishing
+38 silly currentTree js
+39 silly idealTree js
+39 silly idealTree └── popperjs-monorepo@0.0.0
+40 silly generateActionsToTake Starting
+41 silly install generateActionsToTake
+42 silly generateActionsToTake Finishing
+43 silly diffTrees action count 1
+44 silly diffTrees add popperjs-monorepo@0.0.0
+45 silly decomposeActions action count 8
+46 silly decomposeActions fetch popperjs-monorepo@0.0.0
+47 silly decomposeActions extract popperjs-monorepo@0.0.0
+48 silly decomposeActions test popperjs-monorepo@0.0.0
+49 silly decomposeActions preinstall popperjs-monorepo@0.0.0
+50 silly decomposeActions build popperjs-monorepo@0.0.0
+51 silly decomposeActions install popperjs-monorepo@0.0.0
+52 silly decomposeActions postinstall popperjs-monorepo@0.0.0
+53 silly decomposeActions finalize popperjs-monorepo@0.0.0
+54 silly executeActions Starting
+55 silly install executeActions
+56 silly doSerial global-install 0
+57 silly doParallel fetch 1
+58 verbose lock using /home/brutus/.npm/_locks/staging-c1de73d0cc734f6d.lock for /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging
+59 silly doParallel extract 1
+60 silly extract popperjs-monorepo@0.0.0
+61 verbose unbuild node_modules/.staging/popperjs-monorepo-5b7790ba
+62 silly gentlyRm /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba is being purged from base /home/brutus/repo/rickmorthy.github.io/js
+63 verbose gentlyRm don't care about contents; nuking /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba
+64 verbose tar unpack /home/brutus/.npm/popperjs-monorepo/0.0.0/package.tgz
+65 verbose tar unpacking to /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba
+66 silly gentlyRm /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba is being purged
+67 verbose gentlyRm don't care about contents; nuking /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba
+68 silly gunzTarPerm modes [ '755', '644' ]
+69 silly gunzTarPerm extractEntry package.json
+70 silly gunzTarPerm extractEntry .npmignore
+71 silly gunzTarPerm extractEntry README.md
+72 silly gunzTarPerm extractEntry LICENSE.md
+73 silly gunzTarPerm extractEntry .bithoundrc
+74 silly gunzTarPerm extractEntry .jsdoc
+75 silly gunzTarPerm extractEntry .travis.yml
+76 silly gunzTarPerm extractEntry CHANGELOG.md
+77 silly gunzTarPerm extractEntry CONTRIBUTING.md
+78 silly gunzTarPerm extractEntry .codeclimate.yml
+79 silly gunzTarPerm extractEntry MENTIONS.md
+80 silly gunzTarPerm extractEntry .editorconfig
+81 silly gunzTarPerm extractEntry docs/favicon-32x32.png
+82 silly gunzTarPerm extractEntry docs/CNAME
+83 silly gunzTarPerm extractEntry docs/README.txt
+84 silly gunzTarPerm extractEntry docs/_config.yml
+85 silly gunzTarPerm extractEntry docs/_includes/example40-code.html
+86 silly gunzTarPerm extractEntry docs/_includes/example10-code.html
+87 silly gunzTarPerm extractEntry docs/_includes/example10t-code.html
+88 silly gunzTarPerm extractEntry docs/_includes/example10t.html
+89 silly gunzTarPerm extractEntry docs/_includes/example20-code.html
+90 silly gunzTarPerm extractEntry docs/_includes/example20.html
+91 silly gunzTarPerm extractEntry docs/_includes/example20t-code.html
+92 silly gunzTarPerm extractEntry docs/_includes/example20t.html
+93 silly gunzTarPerm extractEntry docs/_includes/example30-code.html
+94 silly gunzTarPerm extractEntry docs/_includes/example30.html
+95 silly gunzTarPerm extractEntry docs/_includes/example10.html
+96 silly gunzTarPerm extractEntry docs/_includes/example40.html
+97 silly gunzTarPerm extractEntry docs/_includes/example50-code.html
+98 silly gunzTarPerm extractEntry docs/_includes/example50.html
+99 silly gunzTarPerm extractEntry docs/_includes/footer.html
+100 silly gunzTarPerm extractEntry docs/_includes/head.html
+101 silly gunzTarPerm extractEntry docs/_includes/header.html
+102 silly gunzTarPerm extractEntry docs/_includes/popper-documentation.md
+103 silly gunzTarPerm extractEntry docs/_includes/scripts.html
+104 silly gunzTarPerm extractEntry docs/_includes/tooltip-documentation.md
+105 silly gunzTarPerm extractEntry docs/_layouts/default.html
+106 silly gunzTarPerm extractEntry docs/_layouts/landing.html
+107 silly gunzTarPerm extractEntry docs/_layouts/page-hashtag.html
+108 silly gunzTarPerm extractEntry docs/_layouts/page-nowrap.html
+109 silly gunzTarPerm extractEntry docs/_layouts/page.html
+110 silly gunzTarPerm extractEntry docs/_sass/libs/_functions.scss
+111 silly gunzTarPerm extractEntry docs/_sass/libs/_mixins.scss
+112 silly gunzTarPerm extractEntry docs/_sass/libs/_skel.scss
+113 silly gunzTarPerm extractEntry docs/_sass/libs/_vars.scss
+114 silly gunzTarPerm extractEntry docs/css/code.css
+115 silly gunzTarPerm extractEntry docs/css/font-awesome.min.css
+116 silly gunzTarPerm extractEntry docs/css/ie8.scss
+117 silly gunzTarPerm extractEntry docs/css/ie9.scss
+118 silly gunzTarPerm extractEntry docs/css/images/arrow.svg
+119 silly gunzTarPerm extractEntry docs/css/images/bars.svg
+120 silly gunzTarPerm extractEntry docs/css/images/close.svg
+121 silly gunzTarPerm extractEntry docs/css/main.scss
+122 silly gunzTarPerm extractEntry docs/css/popper.css
+123 silly gunzTarPerm extractEntry docs/documentation.html
+124 silly gunzTarPerm extractEntry docs/favicon-16x16.png
+125 silly gunzTarPerm extractEntry docs/LICENSE.txt
+126 silly gunzTarPerm extractEntry docs/favicon-96x96.png
+127 silly gunzTarPerm extractEntry docs/favicon.ico
+128 silly gunzTarPerm extractEntry docs/feed.xml
+129 silly gunzTarPerm extractEntry docs/fonts/FontAwesome.otf
+130 silly gunzTarPerm extractEntry docs/fonts/fontawesome-webfont.eot
+131 silly gunzTarPerm extractEntry docs/fonts/fontawesome-webfont.svg
+132 silly gunzTarPerm extractEntry docs/fonts/fontawesome-webfont.ttf
+133 silly gunzTarPerm extractEntry docs/fonts/fontawesome-webfont.woff
+134 silly gunzTarPerm extractEntry docs/fonts/fontawesome-webfont.woff2
+135 silly gunzTarPerm extractEntry docs/images/banner.jpg
+136 silly gunzTarPerm extractEntry docs/images/banner.png
+137 silly gunzTarPerm extractEntry docs/images/logo.png
+138 silly gunzTarPerm extractEntry docs/images/pic01.jpg
+139 silly gunzTarPerm extractEntry docs/images/pic02.jpg
+140 silly gunzTarPerm extractEntry docs/images/pic03.jpg
+141 silly gunzTarPerm extractEntry docs/images/pic04.jpg
+142 silly gunzTarPerm extractEntry docs/images/pic05.jpg
+143 silly gunzTarPerm extractEntry docs/index.html
+144 silly gunzTarPerm extractEntry docs/js/jquery.min.js
+145 silly gunzTarPerm extractEntry docs/js/jquery.nanoscroller.js
+146 silly gunzTarPerm extractEntry docs/js/jquery.scrollex.min.js
+147 silly gunzTarPerm extractEntry docs/js/jquery.scrolly.min.js
+148 silly gunzTarPerm extractEntry docs/js/main.js
+149 silly gunzTarPerm extractEntry docs/js/skel.min.js
+150 silly gunzTarPerm extractEntry docs/js/util.js
+151 silly gunzTarPerm extractEntry docs/js/ie/html5shiv.js
+152 silly gunzTarPerm extractEntry docs/js/ie/respond.min.js
+153 silly gunzTarPerm extractEntry docs/js/ie/backgroundsize.min.htc
+154 silly gunzTarPerm extractEntry docs/popper-documentation.html
+155 silly gunzTarPerm extractEntry docs/tooltip-documentation.html
+156 silly gunzTarPerm extractEntry docs/tooltip-examples.html
+157 silly gunzTarPerm extractEntry lerna.json
+158 silly gunzTarPerm extractEntry .github/ISSUE_TEMPLATE.md
+159 silly gunzTarPerm extractEntry .github/PULL_REQUEST_TEMPLATE.md
+160 silly gunzTarPerm extractEntry packages/babel-config/package.json
+161 silly gunzTarPerm extractEntry packages/babel-config/index.js
+162 silly gunzTarPerm extractEntry packages/babel-config/yarn.lock
+163 silly gunzTarPerm extractEntry packages/bundle/package.json
+164 silly gunzTarPerm extractEntry packages/bundle/index.js
+165 silly gunzTarPerm extractEntry packages/bundle/yarn.lock
+166 silly gunzTarPerm extractEntry packages/eslint-config-popper/package.json
+167 silly gunzTarPerm extractEntry packages/eslint-config-popper/index.js
+168 silly gunzTarPerm extractEntry packages/eslint-config-popper/yarn.lock
+169 silly gunzTarPerm extractEntry packages/popper/package.json
+170 silly gunzTarPerm extractEntry packages/popper/README.md
+171 silly gunzTarPerm extractEntry packages/popper/index.d.ts
+172 silly gunzTarPerm extractEntry packages/popper/index.js.flow
+173 silly gunzTarPerm extractEntry packages/test/package.json
+174 silly gunzTarPerm extractEntry packages/test/README.md
+175 silly gunzTarPerm extractEntry packages/test/.babelrc.js
+176 silly gunzTarPerm extractEntry packages/test/karma.conf.js
+177 silly gunzTarPerm extractEntry packages/test/bin/karma.js
+178 silly gunzTarPerm extractEntry packages/test-utils/package.json
+179 silly gunzTarPerm extractEntry packages/test-utils/setup.js
+180 silly gunzTarPerm extractEntry packages/test-utils/utils/appendNewPopper.js
+181 silly gunzTarPerm extractEntry packages/test-utils/utils/customEventPolyfill.js
+182 silly gunzTarPerm extractEntry packages/test-utils/utils/getRect.js
+183 silly gunzTarPerm extractEntry packages/test-utils/utils/isMSBrowser.js
+184 silly gunzTarPerm extractEntry packages/test-utils/utils/appendNewRef.js
+185 silly gunzTarPerm extractEntry packages/test-utils/utils/makeConnectedScrollElement.js
+186 silly gunzTarPerm extractEntry packages/test-utils/utils/makeElement.js
+187 silly gunzTarPerm extractEntry packages/test-utils/utils/prepend.js
+188 silly gunzTarPerm extractEntry packages/test-utils/utils/simulateScroll.js
+189 silly gunzTarPerm extractEntry packages/test-utils/utils/then.js
+190 silly gunzTarPerm extractEntry packages/test-utils/utils/makeConnectedElement.js
+191 silly gunzTarPerm extractEntry packages/test-utils/yarn.lock
+192 silly gunzTarPerm extractEntry packages/tooltip/package.json
+193 silly gunzTarPerm extractEntry packages/tooltip/index.d.ts
+194 silly gunzTarPerm extractEntry popperjs.png
+195 silly gunzTarPerm extractEntry yarn.lock
+196 silly gentlyRm /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba/node_modules is being purged
+197 verbose gentlyRm don't care about contents; nuking /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba/node_modules
+198 silly doParallel preinstall 1
+199 silly preinstall popperjs-monorepo@0.0.0 /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba
+200 info lifecycle popperjs-monorepo@0.0.0~preinstall: popperjs-monorepo@0.0.0
+201 silly lifecycle popperjs-monorepo@0.0.0~preinstall: no script for preinstall, continuing
+202 silly doReverseSerial remove 0
+203 silly doSerial move 0
+204 silly doSerial finalize 1
+205 silly finalize /home/brutus/repo/rickmorthy.github.io/js/node_modules/popperjs-monorepo
+206 silly doSerial build 1
+207 silly build popperjs-monorepo@0.0.0
+208 info linkStuff popperjs-monorepo@0.0.0
+209 silly linkStuff popperjs-monorepo@0.0.0 has /home/brutus/repo/rickmorthy.github.io/js/node_modules as its parent node_modules
+210 verbose linkBins popperjs-monorepo@0.0.0
+211 verbose linkMans popperjs-monorepo@0.0.0
+212 silly doSerial global-link 0
+213 silly doParallel update-linked 0
+214 silly doSerial install 1
+215 silly install popperjs-monorepo@0.0.0 /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba
+216 info lifecycle popperjs-monorepo@0.0.0~install: popperjs-monorepo@0.0.0
+217 silly lifecycle popperjs-monorepo@0.0.0~install: no script for install, continuing
+218 silly doSerial postinstall 1
+219 silly postinstall popperjs-monorepo@0.0.0 /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging/popperjs-monorepo-5b7790ba
+220 info lifecycle popperjs-monorepo@0.0.0~postinstall: popperjs-monorepo@0.0.0
+221 verbose lifecycle popperjs-monorepo@0.0.0~postinstall: unsafe-perm in lifecycle true
+222 verbose lifecycle popperjs-monorepo@0.0.0~postinstall: PATH: /usr/share/npm/bin/node-gyp-bin:/home/brutus/repo/rickmorthy.github.io/js/node_modules/popperjs-monorepo/node_modules/.bin:/home/brutus/repo/rickmorthy.github.io/js/node_modules/.bin:/home/brutus/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+223 verbose lifecycle popperjs-monorepo@0.0.0~postinstall: CWD: /home/brutus/repo/rickmorthy.github.io/js/node_modules/popperjs-monorepo
+224 silly lifecycle popperjs-monorepo@0.0.0~postinstall: Args: [ '-c', 'which-pm-runs --is yarn' ]
+225 info lifecycle popperjs-monorepo@0.0.0~postinstall: Failed to exec postinstall script
+226 verbose unlock done using /home/brutus/.npm/_locks/staging-c1de73d0cc734f6d.lock for /home/brutus/repo/rickmorthy.github.io/js/node_modules/.staging
+227 silly rollbackFailedOptional Starting
+228 silly rollbackFailedOptional Finishing
+229 silly runTopLevelLifecycles Starting
+230 silly runTopLevelLifecycles Finishing
+231 silly install printInstalled
+232 warn enoent ENOENT: no such file or directory, open '/home/brutus/repo/rickmorthy.github.io/js/package.json'
+233 warn js No description
+234 warn js No repository field.
+235 warn js No README data
+236 warn js No license field.
+237 verbose stack Error: popperjs-monorepo@0.0.0 postinstall: `which-pm-runs --is yarn`
+237 verbose stack spawn ENOENT
+237 verbose stack     at ChildProcess.<anonymous> (/usr/share/npm/lib/utils/spawn.js:17:16)
+237 verbose stack     at emitTwo (events.js:126:13)
+237 verbose stack     at ChildProcess.emit (events.js:214:7)
+237 verbose stack     at maybeClose (internal/child_process.js:925:16)
+237 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+238 verbose pkgid popperjs-monorepo@0.0.0
+239 verbose cwd /home/brutus/repo/rickmorthy.github.io/js
+240 error Linux 4.15.0-20-generic
+241 error argv "/usr/bin/node" "/usr/bin/npm" "install" "popper.js" "--save"
+242 error node v8.10.0
+243 error npm  v3.5.2
+244 error file sh
+245 error code ELIFECYCLE
+246 error errno ENOENT
+247 error syscall spawn
+248 error popperjs-monorepo@0.0.0 postinstall: `which-pm-runs --is yarn`
+248 error spawn ENOENT
+249 error Failed at the popperjs-monorepo@0.0.0 postinstall script 'which-pm-runs --is yarn'.
+249 error Make sure you have the latest version of node.js and npm installed.
+249 error If you do, this is most likely a problem with the popperjs-monorepo package,
+249 error not with npm itself.
+249 error Tell the author that this fails on your system:
+249 error     which-pm-runs --is yarn
+249 error You can get information on how to open an issue for this project with:
+249 error     npm bugs popperjs-monorepo
+249 error Or if that isn't available, you can get their info via:
+249 error     npm owner ls popperjs-monorepo
+249 error There is likely additional logging output above.
+250 verbose exit [ 1, true ]
