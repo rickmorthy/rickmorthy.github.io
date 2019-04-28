@@ -1,5 +1,5 @@
-function getHtml(x,y=''){
-    if(y.length > 1 && typeof String(y)){
+function getHtml(x,y){
+    if(arguments.length > 1 && typeof String(y)){
         return x+'.html';
     }else{
   return y+'/'+x+'.html';
