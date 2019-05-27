@@ -1,17 +1,14 @@
-function getHtml(x,y){
-    if(arguments.length > 1 && typeof String(y)){
-        return x+'.html';
-    }else{
-  return y+'/'+x+'.html';
-    }
-}
 function Wind(x){
   this.x = x;
 }
 Wind.prototype.test = function (arguments) {
-  console.log('This wokrs');
-  $('body').load(getHtml('window','../blocks'));
+  // console.log('This wokrs');
+  // $('body').load('blocks/window.html');
+  var t;
 
+
+  // console.log(t);
+  $('body').append(t);
 };
 
 var f = new Wind();

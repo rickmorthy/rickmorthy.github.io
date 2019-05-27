@@ -1,5 +1,14 @@
-//new ClipboardJS('.btn');
-// console.log(Array.prototype);
+// console.log(pano_promt_init());
+var arr = ['Decimal','Binary','Hexadecimal','Other'];
+// console.log(pano_promt_init(arr));
+$('body').prepend(pano_promt(arr));
+// var v = build.tag('div',{
+//   'class':'btn class',
+//   'pole':''
+// },'This is a content');
+// console.log(v);
+// build.test()
+
 $('.dropdown-item').on('click',function(){
   var val = $(this).html();
   initLabel(val);
@@ -9,16 +18,14 @@ $('.dropdown-item').on('click',function(){
 });
 
 function initLabel(x){
-  var arr = ['Decimal','Binary','Hexadecimal'];
+
   arr.splice(arr.indexOf(x),1);
   arr.unshift(x);
   setLables(arr);
   // return arr;
 }
-function setLables(arr){
+function setLables(arr){//Changes inputs position
   var labels = $('.box1');
-  // var labels = Array.prototype.slice.call($('.box1'));
-  console.log(labels);
   var one = -1;
   $('.box1').each(function(){
     one++;

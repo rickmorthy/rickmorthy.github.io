@@ -1,5 +1,3 @@
-
-
 $('button.dec-to-bin-dec').on('click',function() {
   var value = $('.dec-to-bin-dec').val();
   // console.log(value);
@@ -28,4 +26,4 @@ var decToBin = function(digit){
 var decToHex = function(digit) {
    var hex = (parseInt(digit)).toString(16);
     return hex;
-}
+  }
