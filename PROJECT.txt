@@ -1,0 +1,6 @@
+Features:
+-History - save value from pano if user hasn't make any changes for n seconds.
+         - save value to cookies reload
+
+Engine:
+-
