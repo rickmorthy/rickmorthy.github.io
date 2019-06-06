@@ -21,10 +21,8 @@ class Actions {
             collection_of_words = document.querySelectorAll('.numeral_word'+id),
             collection_of_numbs = document.querySelectorAll('.numeral_numb'+id),
             collection_of_toggle = document.querySelectorAll('.widget'+id+' .dropdown-item');
-            console.log(collection_of_numbs);
 
-        numeral_numb = getAttribute(collection_of_numbs);
-        console.log(numeral_numb);
+        numeral_numb = this.getAttribute(collection_of_numbs);
         numeral_numb.rotate(element.attributes.numeral.nodeValue);//rotate() located in init.js
 
         numeral_word.push(...collection_of_words);
@@ -47,7 +45,6 @@ class Actions {
 };
 
  convertion(this_elem,id) {
-  console.log(this_elem);
   var collection_of_numbs = document.querySelectorAll('.numeral_numb'+id),
       numeral = this.getAttribute(collection_of_numbs);
 
@@ -55,17 +52,28 @@ class Actions {
         orig:collection_of_numbs,
         values:numeral,
       }
-
+      // This statement desides what value return to call function and then assign to DOM node
       if (this_elem.value !== '') {
-        this.obj.func = 'regular';
-        this.assignValues.call(obj);
-      }else {
-        if(this_elem.attributes.numeral.value === '16'){
-          this.obj.func = 'hex';
-          this.assignValues.call(obj);
+        switch (this_elem.attributes.numeral.value) {
+          case '16':
+          this.obj.func = function(input_numb,i){
+                return parseInt(input_numb,16).toString(this.values[i]);
+              }
+          this.assignValues.call(this.obj);
+            break;
+          case '2':
+          this.obj.func = function(input_numb,i){
+                return parseInt(input_numb,2).toString(this.values[i]);
+              }
+          this.assignValues.call(this.obj);
+            break;
+          default:
+          this.obj.func = function(input_numb,i) {//input is decimal or octal
+                return parseInt(input_numb).toString(this.values[i]);
+              }
+          this.assignValues.call(this.obj);
+
         }
-        this.obj.func = 'empty';
-        assignValues.call(obj);
       }
 
 }
@@ -75,29 +83,8 @@ class Actions {
 // func: actual function that converts input number
 //}
  assignValues() {
-   console.log(this);
   for (var i = 1; i < this.orig.length; i++) {
-    // console.log(this.);
-    this.orig[i].value = this.func(parseInt(this.orig[0].value),this.values[i]);//check of this properties exist int THIS object
+    this.orig[i].value = this.func(this.orig[0].value,i);//check of this properties exist int THIS object
   }
-  // this.result =
-}
-set setFunction(type){
-  switch (type) {
-    case 'regular':
-    this.obj.func = function(input_numb,numeral) {
-      return input_numb.toString(numeral);
-    }
-      break;
-    case 'hex':
-    this.obj.func = function(input_numb,numeral){
-      this.obj.func = parseInt(input_numb,16).toString(numeral);
-    }
-    case 'empty':
-    this.obj.func = function(){
-      return collection_of_numbs[i].value = '';
-    }
-  }
-
 }
 }
