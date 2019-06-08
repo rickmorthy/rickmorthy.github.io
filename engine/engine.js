@@ -1,29 +1,40 @@
-$('button.dec-to-bin-dec').on('click',function() {
-  var value = $('.dec-to-bin-dec').val();
-  // console.log(value);
-  // var t = decToBin(value);
-  var t = decToHex(value);
-  $('.dec-to-bin .bin').val(t);
-});
-
-
-
-
-
+function addBit(bin) {
+  //expand to 8 or 16 bits
+  var bit = bin;
+  for (var i = bit.length-1; i >= 0; i--) {
+        if(parseInt(bit[i]) + 1 > 1){
+        bit[i] = '0';
+      }else {
+        bit[i] = '1';
+        return bit;
+      }
+  }
+}
 var decToBin = function(digit){
   var add = 1,
       bin,
       van = [],
       limit;
-      digit>256 ? limit = 2048 : limit = 128;
+      digit>=256 ? limit = 2048 : limit = 128;
   while(add<=limit){
     bin = (digit & add);
-    bin ? van.unshift('1'):van.unshift('0');
+    bin ? van.unshift('0'):van.unshift('1');
     add += add;
   }
-    return van.join('');
+    return addBit(van).join('');
 }
-var decToHex = function(digit) {
-   var hex = (parseInt(digit)).toString(16);
-    return hex;
+console.log(decToBin(256));
+
+function binToDec(number) {
+  var digit = number.toString(),
+      accume = 1,
+      add = 1;
+  for (var i = digit.length-1; i >= 0; i--) {
+    if (digit[i] === '0') {
+      accume += add;
+    }
+    add += add;
   }
+  return accume;
+}
+console.log(binToDec(10001100));

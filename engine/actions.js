@@ -1,10 +1,18 @@
 //
+
 class Actions {
   constructor(id) {
     this.id = id;
-    this.object = global_container[id];
+    // this.object = global_container[id];
     this.obj = {};
   }
+  // Sets value to array of Elements
+ assignValues() {
+   for (var i = 1; i < this.orig.length; i++) {
+     this.orig[i].value = this.func(this.orig[0].value,i);//check of this properties exist int THIS object
+   }
+ }
+ // Retrieve array of value 'numeral' attribute
  getAttribute(set) {
   var numeral_numb = [];
   numeral_numb.push(...set);
@@ -44,7 +52,8 @@ class Actions {
         }
 };
 
- convertion(this_elem,id) {
+
+ _conversion(this_elem,id) {
   var collection_of_numbs = document.querySelectorAll('.numeral_numb'+id),
       numeral = this.getAttribute(collection_of_numbs);
 
@@ -77,14 +86,48 @@ class Actions {
       }
 
 }
+_twos_conversion(this_elem,id){
+
+}
+
+
 //{
 // orig: collection of input nodes
 // values: numeral system to wich number will be converted
 // func: actual function that converts input number
 //}
- assignValues() {
-  for (var i = 1; i < this.orig.length; i++) {
-    this.orig[i].value = this.func(this.orig[0].value,i);//check of this properties exist int THIS object
-  }
+
 }
-}
+console.log(new Actions());
+// global_container.prototype._convertion = function (this_elem,id) {
+//   var collection_of_numbs = document.querySelectorAll('.numeral_numb'+id),
+//       numeral = this.getAttribute(collection_of_numbs);
+//
+//       this.obj = {
+//         orig:collection_of_numbs,
+//         values:numeral,
+//       }
+//       // This statement desides what value return to call function and then assign to DOM node
+//       if (this_elem.value !== '') {
+//         switch (this_elem.attributes.numeral.value) {
+//           case '16':
+//           this.obj.func = function(input_numb,i){
+//                 return parseInt(input_numb,16).toString(this.values[i]);
+//               }
+//           this.assignValues.call(this.obj);
+//             break;
+//           case '2':
+//           this.obj.func = function(input_numb,i){
+//                 return parseInt(input_numb,2).toString(this.values[i]);
+//               }
+//           this.assignValues.call(this.obj);
+//             break;
+//           default:
+//           this.obj.func = function(input_numb,i) {//input is decimal or octal
+//                 return parseInt(input_numb).toString(this.values[i]);
+//               }
+//           this.assignValues.call(this.obj);
+//
+//         }
+//       }
+// };
