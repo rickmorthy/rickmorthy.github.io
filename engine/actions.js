@@ -115,16 +115,16 @@ _twos_conversion(this_elem,id){
       case '2':
       obj.result.push(
         this_elem.value,
-        manip.binToDec(input_value),
-        manip.decToHex(obj.result[1])
+        tmp = manip.binToDec(input_value),
+        manip.decToHex(tmp)
       )
       this.assignValues.call(obj);
         break;
       case '10':
       obj.result.push(
         this_elem.value,
-        manip.decToBin(input_value),
-        manip.decToHex(obj.result[1])
+        tmp = manip.decToBin(input_value),
+        manip.decToHex(tmp)
       );
       console.log(obj.result);
       this.assignValues.call(obj);
