@@ -3,7 +3,7 @@ class Control{
     //this.key IS A MAIN PROPERTY EVERY OTHER METHODS DEPEND OF
     this.global_obj = obj;
     var widget1 = 'widget1';
-    console.log(global_container[widget1]);
+    // console.log(global_container[widget1]);
     this.object = obj.obj;
     var global_arr = this.object;//for maping(construct object not in scope for map func)
     this.key = Object.keys(this.object);//Numeral system in word ex. Decimal
