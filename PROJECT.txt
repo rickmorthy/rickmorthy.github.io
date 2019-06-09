@@ -2,6 +2,12 @@ Features:
 -History - save value from pano if user hasn't make any changes for n seconds.
          - save value to cookies reload
 
+Engine:
+-
 
-TODO: rotate numbers in inputs along with toggle menu
-      input validator
+
+
+
+TODO
+Extend Action from Model
+In Views(Index) file pass name of function that uses for conversion,

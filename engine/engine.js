@@ -13,7 +13,7 @@ class Manipulation {
     }
   };
  decToBin(digit){
-   console.log(digit);
+   // console.log(digit);
     var add = 1,
         bin,
         van = [],
@@ -42,33 +42,24 @@ class Manipulation {
   }
 // }
 decToHex(number){
-
-  return '16';
+  var dec = (16 + (-number[0])).toString(16);
+  console.log(dec);
+  if (number.length > 1) {
+    for (var i = 1; i < number.length;i++) {
+      dec += (16 + (-number[i])).toString(16);
+    }
+  }
+  return dec;
 }
 hexToDec(number){
-  //FFFE
-  var hex = {'a':10,'b':11,'c':12,'d':13,'e':14,'f':15},
-      final = [],
-      tmp;
-   for (var elem in number) {
-     console.log(number[elem]);
-     if (/[a-zA-Z]/.test(number[elem])) {
-       final.push(hex[number]);
-     }else if (/[0-9]/gm.test(number[elem])) {
-       final.push(parseInt(number ));
-     }
-   }
-   final.sum();
-   console.log(final);
-  return final;
+  var dec = 16 - parseInt(number[0], 16);
+  if (number.length > 1) {
+    for (var elem in number) {
+      dec += 15 - parseInt(number[elem],16);
+    }
+  }
+  return dec;
 }
 }
-Array.prototype.sum = function () {
-  var tmp = 0;
-  this.forEach((item) => {
-    console.log(typeof item);
-    tmp += item;
-  })
-  return tmp;
-};
+
   // console.log(binToDec(10001100));

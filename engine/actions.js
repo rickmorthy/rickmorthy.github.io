@@ -123,8 +123,8 @@ _twos_conversion(this_elem,id){
       case '10':
       obj.result.push(
         this_elem.value,
-        tmp = manip.decToBin(input_value),
-        manip.decToHex(tmp)
+        manip.decToBin(input_value),
+        manip.decToHex(input_value)
       );
       console.log(obj.result);
       this.assignValues.call(obj);
