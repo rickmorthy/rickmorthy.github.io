@@ -12,7 +12,20 @@ class Manipulation {
         }
     }
   };
- decToBin(digit){
+  remBit(bin){
+    var bit = bin.toString().split('');
+    console.log(bit);
+    for (var i = bit.length-1; i >= 0; i--) {
+          if(parseInt(bit[i]) + 1 === 1){
+            console.log(bit);
+          bit[i] = '1';
+        }else {
+          bit[i] = '0';
+          return bit.join('');
+        }
+    }
+  }
+ d2b(digit){
    // console.log(digit);
     var add = 1,
         bin,
@@ -28,7 +41,7 @@ class Manipulation {
       return this.addBit(van).join('');
   }
 
-   binToDec(number) {
+   b2d(number) {
     var digit = number.toString(),
         accume = 1,
         add = 1;
@@ -41,7 +54,7 @@ class Manipulation {
     return '-'+accume.toString();
   }
 // }
-decToHex(number){
+d2h(number){
   var dec = (16 + (-number[0])).toString(16);
   console.log(dec);
   if (number.length > 1) {
@@ -51,7 +64,7 @@ decToHex(number){
   }
   return dec;
 }
-hexToDec(number){
+h2d(number){
   var dec = 16 - parseInt(number[0], 16);
   if (number.length > 1) {
     for (var elem in number) {
@@ -59,6 +72,11 @@ hexToDec(number){
     }
   }
   return dec;
+}
+b2h(number){
+  if(number.length % 4 === 0){
+
+  }
 }
 }
 

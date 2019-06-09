@@ -25,3 +25,5 @@ function test(str) {
   }
 }
 // test('str');
+var r = new Manipulation();
+console.log(r.remBit(1100));
