@@ -27,7 +27,7 @@ class Model {
       child_node.push(
         '</div>',
         '</div>',
-        '<input type="text" numeral="'+numeral+'" onkeyup="new Actions().'+this.id+'(this,'+this.method+ ')" class="numeral_numb'+iter+' form-control" aria-label="Text input with dropdown button">',
+        '<input pattern="[0-1]{4}" type="text" numeral="'+numeral+'" onkeyup="new Actions().'+this.id+'(this,'+this.method+ ')" class="numeral_numb'+iter+' form-control" aria-label="Text input with dropdown button">',
         '</div>',
         '</div>'
       );
@@ -38,7 +38,7 @@ class Model {
       '<div class="col-12 align-self-center module-row">',
         '<label class="numeral_word'+this.id+'" >'+label+'</label>',
         '<div class="input-group mb-3">',
-          '<input id="clipboard'+iter+'" numeral="'+numeral+'" class="numeral_numb'+this.id+' form-control" typess="form-control" placeholder="" aria-label="" aria-describedby="button-addon'+iter+'">',
+          '<input id="clipboard'+iter+'" numeral="'+numeral+'" readonly class="numeral_numb'+this.id+' form-control" typess="form-control" placeholder="" aria-label="" aria-describedby="button-addon'+iter+'">',
           '<div class="input-group-append">',
             '<button class="btn btn-outline-secondary" type="button" id="button-addon'+iter+'" data-clipboard-target="#clipboard'+iter+'">',
               '<i class="fas fa-copy"></i>',
