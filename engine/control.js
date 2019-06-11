@@ -1,21 +1,18 @@
 class Control{
   constructor(obj) {
-    //this.key IS A MAIN PROPERTY EVERY OTHER METHODS DEPEND OF
-    this.global_obj = obj;
-    var widget1 = 'widget1';
-    // console.log(global_container[widget1]);
     this.object = obj.obj;
     var global_arr = this.object;//for maping(construct object not in scope for map func)
     this.key = Object.keys(this.object);//Numeral system in word ex. Decimal
     this.values = Object.values(this.object);//Numeral system in number ex. 16
-    // console.log(this.values);
-    this.true_arr = Object.keys(this.object).map(function(key,index,arr) {//asoc array
-      return [key,Object.values(global_arr)[index]];
-    })
+
     this.size = obj.size;
     this.id = obj.id;
     this.length = Object.keys(this.key).length;
     this.model = new Model(obj);
+    // console.log(global_container[widget1]);
+    global_container['widget'+this.id] = {
+      values:{}
+    }
     }
     widget(arr,size,number){
       var widget;
@@ -26,6 +23,7 @@ class Control{
         widget += this.model.pano_result(this.key[i], i, this.values[i]);
       }
       widget += this.model.closure('end');
+
       return jQuery.parseHTML(widget);
     };
     set global_obj(object){
@@ -34,4 +32,5 @@ class Control{
       // console.dir(length);
       // global_container.log.push = object;
     }
+
   }

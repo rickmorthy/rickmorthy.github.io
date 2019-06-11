@@ -17,13 +17,10 @@ id:'_conversion',//both as selector and as method name called in Actions()
 }).widget());
 // console.log(parseInt('f',16));
 
-function test(str) {
-  for (var elem in str) {
-    if (str.hasOwnProperty(elem)) {
-      console.log(str[elem]);
-    }
-  }
-}
-// test('str');
-var r = new Manipulation();
-console.log(r.remBit(1100));
+// function test(str) {
+//   for (var elem in str) {
+//     if (str.hasOwnProperty(elem)) {
+//       console.log(str[elem]);
+//     }
+//   }
+// }
