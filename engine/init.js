@@ -25,6 +25,7 @@
   Array.prototype.rotate = function (first) {
     // console.log(first);
     this.splice(this.indexOf(first),1);
-    return this.unshift(first);
+    this.unshift(first);
+    return this;
   }
 }());

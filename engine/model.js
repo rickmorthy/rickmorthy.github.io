@@ -17,17 +17,17 @@ class Model {
         "<div class=\"col-12 align-self-start module-row\">",
         '<div class="input-group mb-3">',
         '<div class="input-group-prepend">',
-        '<button numeral="'+this.numeral[0]+'" class="numeral_word'+this.id+' btn prime-button btn-outline-secondary dropdown-toggle '+label.toLowerCase()+'" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+label+'</button>',
+        '<button numeral="'+this.numeral[0]+'" class="numeral_word'+this.id+' dropdown'+this.id+' btn prime-button btn-outline-secondary dropdown-toggle '+label.toLowerCase()+'" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+label+'</button>',
         '<div class="dropdown-menu toggle-routine toggle_menu'+this.id+'">',
                       ];
       for (var i = 1; i < this.key.length; i++) {
-        child_node.push('<a class="dropdown-item" numeral="'+this.numeral[i]+'" onclick="new Actions().buildAction(this,'+this.method+')" href="#">'+this.key[i]+'</a>');
+        child_node.push('<a class="dropdown-item dropdown'+this.id+'" numeral="'+this.numeral[i]+'" onclick="new Actions().buildAction(this,'+this.method+')" href="#">'+this.key[i]+'</a>');
       }
       // this.promt[this.promt.indexOf('CONT')] = child_node;
       child_node.push(
         '</div>',
         '</div>',
-        '<input type="text" pattern="[0-9]" numeral="'+numeral+'" onkeyup="new Actions(this).addEvent().'+this.id+'('+this.method+ ')" class="numeral_numb'+iter+' form-control" id="input'+this.id+'" aria-label="Text input with dropdown button">',
+        '<input type="text" numeral="'+numeral+'" onkeyup="new Actions(this).addEvent().'+this.id+'('+this.method+ ')" class="numeral_numb'+iter+' form-control" id="input'+this.id+'" aria-label="Text input with dropdown button">',
         '</div>',
         '</div>'
       );
