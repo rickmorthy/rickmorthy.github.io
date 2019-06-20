@@ -21,13 +21,13 @@ class Model {
         '<div class="dropdown-menu toggle-routine toggle_menu'+this.id+'">',
                       ];
       for (var i = 1; i < this.key.length; i++) {
-        child_node.push('<a class="dropdown-item dropdown'+this.id+'" numeral="'+this.numeral[i]+'" onclick="new Actions().buildAction(this,'+this.method+')" href="#">'+this.key[i]+'</a>');
+        child_node.push('<a class="dropdown-item dropdown'+this.id+'" numeral="'+this.numeral[i]+'" onclick="new Actions(this,'+this.method+').buildAction()" href="#">'+this.key[i]+'</a>');
       }
       // this.promt[this.promt.indexOf('CONT')] = child_node;
       child_node.push(
         '</div>',
         '</div>',
-        '<input type="text" numeral="'+numeral+'" onkeyup="new Actions(this).addEvent().'+this.id+'('+this.method+ ')" class="numeral_numb'+iter+' form-control" id="input'+this.id+'" aria-label="Text input with dropdown button">',
+        '<input type="text" numeral="'+numeral+'" onkeyup="new Actions(this,'+this.method+').addEvent().'+this.id+'()" class="numeral_numb'+iter+' form-control" id="input'+this.id+'" aria-label="Text input with dropdown button">',
         '</div>',
         '</div>'
       );

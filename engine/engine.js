@@ -14,10 +14,10 @@ class Manipulation {
   };
   remBit(bin){
     var bit = bin.toString().split('');
-    console.log(bit);
+    // console.log(bit);
     for (var i = bit.length-1; i >= 0; i--) {
           if(parseInt(bit[i]) + 1 === 1){
-            console.log(bit);
+            // console.log(bit);
           bit[i] = '1';
         }else {
           bit[i] = '0';
@@ -26,7 +26,7 @@ class Manipulation {
     }
   }
  d2b(digit){
-   // console.log(digit);
+   // console.log(5 & 4);
     var add = 1,
         bin,
         van = [],
@@ -34,7 +34,8 @@ class Manipulation {
         digit>=256 ? limit = 2048 : limit = 128;
     while(add<=limit){
       bin = (digit & add);
-      bin ? van.unshift('0'):van.unshift('1');
+      // cons ole.log(bin);
+      bin  ? van.unshift('0'):van.unshift('1');
       add += add;
     }
     // console.log(van);
@@ -56,7 +57,7 @@ class Manipulation {
 // }
 d2h(number){
   var dec = (16 + (-number[0])).toString(16);
-  console.log(dec);
+  // console.log(dec);
   if (number.length > 1) {
     for (var i = 1; i < number.length;i++) {
       dec += (16 + (-number[i])).toString(16);

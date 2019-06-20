@@ -10,9 +10,9 @@ class Control{
     this.length = Object.keys(this.key).length;
     this.model = new Model(obj);
     // console.log(global_container[widget1]);
-    global_container['widget'+this.id] = {
-      values:{}
-    }
+    // global_container['widget'+this.id] = {
+    //   values:{}
+    // }
     }
     widget(arr,size,number){
       var widget;

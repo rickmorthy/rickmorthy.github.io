@@ -4,13 +4,31 @@ class Actions extends Valid{
   constructor(element,id,flag) {
     super(flag);
     this.id = id;
+    // console.log(this.id);
     this.element = element;
+    this.input_collection = document.querySelectorAll('.widget'+this.id+' input');
     // this.object = global_container[id];
     this.obj = {};
+    // console.log(this.input_collection[0]);
   }
   check(){
     super.check();
   }
+  // get input_collection(){
+  //   return document.querySelectorAll('.widget'+this.id+' input');
+  // }
+  // set_cookies(id){
+  //   var obj = {};
+  //   // this.inputs_collection.
+  //   console.log(this.input_collection);
+  //   global_container['widget'+id] = {values:{}};
+  //   this.input_collection.forEach(function(item) {
+  //     console.log(this);
+  //     global_container['widget'+id].values[item.attributes.numeral.value] = item.value;
+  //   })
+  //   console.log(JSON.stringify(global_container));
+  //   // this.cookies(this.id);
+  // }
   addEvent(){
     // if (this.element.onkeypress === null) {
     //   this.element.onkeypress = new Valid(this.element);
@@ -53,113 +71,69 @@ class Actions extends Valid{
      }
    }
    input_attr_map.unshift(tmp);
-   // return false;
    input_attr_map.map(function(item,index,arr) {
-     // console.dir(input_set[index].attributes.numeral);
-     // console.dir(item);
      inputs[index].attributes.numeral.value = item;
    })
- // tmp = Object.keys(inputs);
- // console.log(input_attr_map);
- // console.dir(document.querySelectorAll('.widget'+id+' input'));
  }
 
    //buildAction collects all nodes with certain selector, place picked node on the first place
    // and assign new array to these nodes.
    //Serves for reassign .dropdown-items
-   buildAction(element,id){
-        var button = $(element).html(),
+   buildAction(){
+     // console.log(this.input_collection);
+        var button = $(this.element).html(),
             numeral_word = [],
             numeral_numb = [],
             target_set = [],
             values = [],
             value_element,
             numeral_values = [],
-            collection_of_words = document.querySelectorAll('.numeral_word'+id),
-            collection_of_inputs = document.querySelectorAll('.widget'+id+' input'),
-            collection_of_numbs = this.collection(id),
-            collection_of_toggle = document.querySelectorAll('.dropdown'+id);
+            collection_of_words = document.querySelectorAll('.numeral_word'+this.id),
+            collection_of_inputs = this.input_collection,
+            collection_of_numbs = this.collection(this.id),
+            collection_of_toggle = document.querySelectorAll('.dropdown'+this.id);
+            console.log(this.id);
+          //   this.input_collection.forEach(function(item,index,arr) {
+          //   global_container['widget'+this.id].values[item.attributes.numeral.value] = item.value;
+          // });
 
-            collection_of_inputs.forEach(function(item,index,arr) {
-            global_container['widget'+id].values[item.attributes.numeral.value] = item.value;
-          });
-        // this.swap_inputs(element,collection_of_inputs);
-        collection_of_inputs.forEach(function (i) {
-          console.log(i.attributes.numeral.value);;
-        });
-        // collection_of_inputs.forEach(function(item,i) {
-        //   console.log(i);
-        //    if (item.attributes.numeral.value === element.attributes.numeral.value) {
-        //     value_element = collection_of_inputs[i];
-        //     console.log(value_element);
-        //   }
-        // })
-        console.log(collection_of_inputs);
-        for (var elem in collection_of_inputs) {
-          if (collection_of_inputs.hasOwnProperty(elem)) {
-            // console.log(collection_of_inputs[elem].attributes.numeral.value+' <- live item');
-            //   console.log(element.attributes.numeral.value+' <- 1 element');
-            if (collection_of_inputs[elem].attributes.numeral.value === element.attributes.numeral.value) {
-              // console.log(elem);
-              // console.log(document.querySelectorAll('.widget'+id+' input'));
-              // console.log(collection_of_inputs);
-                value_element = collection_of_inputs[elem];
+        this.input_collection.forEach(function(i) {
+          values.push(i.value);
+        })
+        for (var elem in this.input_collection) {
+          if (this.input_collection.hasOwnProperty(elem)) {
+            if (this.input_collection[elem].attributes.numeral.value === this.element.attributes.numeral.value) {
+              value_element = this.input_collection[elem].value;
               }
           }
         }
-        console.log(collection_of_inputs);
-        values.push(...collection_of_inputs);
-        // values.rotate(value_element);
-        // console.log(values);
-        // values.map(function (item,i) {
-          // numeral_values.push(item.value);
-        //   collection_of_inputs[i].value = item.value;
-        // })
-        // console.log(numeral_values);
+        values.rotate(value_element);
 
-        // .map(function (item) {
-        //   console.log(item);
-        //   return item.value;
-        // });
-
-        numeral_numb = this.collection(id,true);
-        numeral_numb.rotate(element.attributes.numeral.value);//rotate() located in init.js
-
+        numeral_numb = this.collection(this.id,true);
+        numeral_numb.rotate(this.element.attributes.numeral.value);//rotate() located in init.js
         numeral_word.push(...collection_of_words);
         numeral_word = numeral_word.map(function(i) {return i.innerHTML});
-        numeral_word.rotate(element.innerHTML);//rotate() located in init.js
-        // value.rotate(element)
-        // for (var elem in numeral_word) {
-        //   if (numeral_word.hasOwnProperty(elem)) {
-        //     collection_of_words[elem].innerHTML = numeral_word[elem];
-        //     if(elem > 0){
-        //       collection_of_toggle[elem-1].innerHTML = numeral_word[elem];
-        //     }
-        //   }
-        // }
-        // for (var elem in numeral_numb) {
-        //   if (numeral_numb.hasOwnProperty(elem)) {
-        //     collection_of_numbs[elem].attributes.numeral.value = numeral_numb[elem];
-        //   }
-        // }
-        // console.log(values);
+        numeral_word.rotate(this.element.innerHTML);//rotate() located in init.js
+
         numeral_word.map(function(item,i,arr) {
           collection_of_words[i].innerHTML = item;
           collection_of_numbs[i].attributes.numeral.value = numeral_numb[i];
           collection_of_toggle[i].innerHTML = item;
           collection_of_toggle[i].attributes.numeral.value = numeral_numb[i];
-          collection_of_inputs[i].value = values[i].value;
-          // console.log(values[i].value);
+          // console.log(this);
+          collection_of_inputs[i].value = values[i];
+          console.log(values[i]);
         })
+        this.cookies_position(this.id,numeral_numb);
 };
 
 
- _conversion(id) {
+ _conversion() {
    // this.eventListener();
    if (this.falg === true) {
      var obj = {
-         orig:this.collection(id),
-         values:this.collection(id,true),
+         orig:this.collection(this.id),
+         values:this.collection(this.id,true),
          result:[]
        };
        if (this.element.value !== '') {
@@ -185,19 +159,19 @@ class Actions extends Valid{
        }else {
          this.assignValues.call(obj);
        }
+       this.cookies_value(this.id);
        return this;
    }
 
-
 }
-_twos_conversion(id){
+_twos_conversion(){
   // this.eventListener();
   // console.dir(window.getEventListeners());
   if (this.flag === true) {
     var manip = new Manipulation(),
         obj = {
-            orig:this.collection(id),
-            values:this.collection(id,true),
+            orig:this.collection(this.id),
+            values:this.collection(this.id,true),
             result:[]
           },
         tmp  ,
@@ -239,11 +213,38 @@ _twos_conversion(id){
         // obj.func = () => { return ''; }
         this.assignValues.call(obj);
       }
+      this.cookies_value(this.id);
       return this;
   }
 
 }
+cookies_value(id){
 
+  if (!global_container.hasOwnProperty('widget'+id)) {
+    Object.defineProperty(global_container,'widget',{})
+  }else{
+    !global_container['widget'+id].hasOwnProperty(value) ? global_container['widget'+id] = {values:{}} : true;
+  }
+  // if (!global_container['widget'+id].hasOwnProperty(values)) {
+  // }
+console.log(global_container);
+  this.input_collection.forEach(function(item) {
+    console.log(this);
+    global_container['widget'+id].values[item.attributes.numeral.value] = item.value;
+  })
+  console.log(JSON.stringify(global_container));
+  // this.cookies(this.id);
+}
+cookies_position(id,position){//this.id not within scope of this function
+  !global_container['widget'+id] ? global_container['widget'+id] = {position:{}} : true;
+  this.input_collection.forEach(function(item) {
+    console.log(this);
+    global_container['widget'+id].position = position;
+  })
+  console.log(global_container);
+  console.log(JSON.stringify(global_container));
+
+}
 
 
 }

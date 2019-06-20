@@ -5,9 +5,14 @@ Features:
 Engine:
 -
 
-
+!!!!!CHECK   _twos_conversion decinal to hex
 
 
 TODO
-Extend Action from Model
-In Views(Index) file pass name of function that uses for conversion,
+remove eventListener from HTML and try to add them on init to element object.
+
+3rd widget: positive to twos complement
+
+save to cookies:
+  save results on each input change
+  check if global_container empty, load related content to inputs
