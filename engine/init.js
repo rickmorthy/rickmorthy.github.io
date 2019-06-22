@@ -1,5 +1,6 @@
 ;(function () {
   var assetBundle = [
+    'js/cookies.js',
     'js/popper.min.js',
     'js/bootstrap.min.js',
     'js/clipboard.js-master/dist/clipboard.min.js',

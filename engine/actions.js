@@ -124,13 +124,13 @@ class Actions extends Valid{
           collection_of_inputs[i].value = values[i];
           console.log(values[i]);
         })
-        this.cookies_position(this.id,numeral_numb);
+        this.cookies_position(this.id,numeral_numb,numeral_word);
 };
 
 
  _conversion() {
    // this.eventListener();
-   if (this.falg === true) {
+   if (this.flag === true) {
      var obj = {
          orig:this.collection(this.id),
          values:this.collection(this.id,true),
@@ -219,31 +219,36 @@ _twos_conversion(){
 
 }
 cookies_value(id){
-
-  if (!global_container.hasOwnProperty('widget'+id)) {
-    Object.defineProperty(global_container,'widget',{})
-  }else{
-    !global_container['widget'+id].hasOwnProperty(value) ? global_container['widget'+id] = {values:{}} : true;
+// console.dir(document);
+  if (!global_container.hasOwnProperty( id)) {//if widget container doesnt exist - create one.
+    global_container[id] = {};
   }
-  // if (!global_container['widget'+id].hasOwnProperty(values)) {
-  // }
-console.log(global_container);
+  if (!global_container[ id].hasOwnProperty('values')) {
+    // global_container[ id] = {values:{}};
+    Object.defineProperty(global_container[ id],'values',{value:{},writable:true,enumerable:true});
+  }
   this.input_collection.forEach(function(item) {
-    console.log(this);
-    global_container['widget'+id].values[item.attributes.numeral.value] = item.value;
+    global_container[ id].values[item.attributes.numeral.value] = item.value;
   })
+  console.dir(global_container[ id].values);
   console.log(JSON.stringify(global_container));
-  // this.cookies(this.id);
+    cookies.set('bit2bit',JSON.stringify(global_container));
+    // console.log(cookies.get('bit2bit'));
 }
-cookies_position(id,position){//this.id not within scope of this function
-  !global_container['widget'+id] ? global_container['widget'+id] = {position:{}} : true;
-  this.input_collection.forEach(function(item) {
-    console.log(this);
-    global_container['widget'+id].position = position;
+cookies_position(id,numeral_numb,numeral_word){//this.id not within scope of this function
+  // console.log(numeral_numb);
+  if (!global_container.hasOwnProperty( id)) {//if widget container doesnt exist - create one.
+    global_container[ id] = {};
+  }
+  if (!global_container[ id].hasOwnProperty('position')) {
+    // global_container[ id] = {position:{}};
+    Object.defineProperty(global_container[ id],'position',{value:{},writable:true,enumerable:true});
+  }
+  this.input_collection.forEach(function(item,i) {
+    global_container[ id].position[numeral_word[i]] = numeral_numb[i];
   })
-  console.log(global_container);
-  console.log(JSON.stringify(global_container));
-
+    cookies.set('bit2bit',JSON.stringify(global_container));
+    console.log(cookies.get('bit2bit'));
 }
 
 

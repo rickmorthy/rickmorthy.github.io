@@ -15,12 +15,17 @@ obj:reg_con,
 size:'6',
 id:'_conversion',//both as selector and as method name called in Actions()
 }).widget());
-// console.log(parseInt('f',16));
 
-// function test(str) {
-//   for (var elem in str) {
-//     if (str.hasOwnProperty(elem)) {
-//       console.log(str[elem]);
-//     }
-//   }
-// }
+if (document.readyState === 'complete') {
+
+  console.log(document.readyState);
+  console.log('its alive');
+  var bit2bit = cookies.get('bit2bit');
+  // return false;op
+  if (bit2bit !== undefined) {
+    global_container = JSON.parse(bit2bit);
+    // console.log(bit2bit);
+    // console.log(JSON.parse(bit2bit));
+
+  }
+}
