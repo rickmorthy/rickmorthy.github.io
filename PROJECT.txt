@@ -16,3 +16,8 @@ remove eventListener from HTML and try to add them on init to element object.
 save to cookies:
   save results on each input change
   check if global_container empty, load related content to inputs
+
+
+
+BUGS:
+  saves wrong somewhere in cookies_value()

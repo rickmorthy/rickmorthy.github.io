@@ -40,7 +40,6 @@ class Actions extends Valid{
   // Sets value to array of Elements
  assignValues() {
    for (var i = 1; i < this.orig.length; i++) {
-     // console.log(this.result[i]);
      this.result.length === 0 ? this.orig[i].value = '' : this.orig[i].value = this.result[i];//check of this properties exist int THIS object
    }
  }
@@ -48,8 +47,11 @@ class Actions extends Valid{
    var collection_of_numbs = document.querySelectorAll('.numeral_numb'+id),
        numeral = [];
        numeral.push(...collection_of_numbs);
+       console.log(numeral);
        if(bool === true){
-         return numeral.map(function(i) { return i.attributes.numeral.value});
+         return numeral.map(function(i) {
+           console.log(i.attributes.numeral.value);
+            return i.attributes.numeral.value});
        } else {
          return collection_of_numbs;
        }
@@ -110,7 +112,9 @@ class Actions extends Valid{
         values.rotate(value_element);
 
         numeral_numb = this.collection(this.id,true);
+        console.log(this.collection(this.id,true));
         numeral_numb.rotate(this.element.attributes.numeral.value);//rotate() located in init.js
+        console.log(numeral_numb);
         numeral_word.push(...collection_of_words);
         numeral_word = numeral_word.map(function(i) {return i.innerHTML});
         numeral_word.rotate(this.element.innerHTML);//rotate() located in init.js
@@ -122,14 +126,13 @@ class Actions extends Valid{
           collection_of_toggle[i].attributes.numeral.value = numeral_numb[i];
           // console.log(this);
           collection_of_inputs[i].value = values[i];
-          console.log(values[i]);
         })
         this.cookies_position(this.id,numeral_numb,numeral_word);
 };
 
 
  _conversion() {
-   // this.eventListener();
+   // console.log('here');
    if (this.flag === true) {
      var obj = {
          orig:this.collection(this.id),
@@ -219,36 +222,37 @@ _twos_conversion(){
 
 }
 cookies_value(id){
-// console.dir(document);
   if (!global_container.hasOwnProperty( id)) {//if widget container doesnt exist - create one.
     global_container[id] = {};
   }
   if (!global_container[ id].hasOwnProperty('values')) {
-    // global_container[ id] = {values:{}};
-    Object.defineProperty(global_container[ id],'values',{value:{},writable:true,enumerable:true});
+    Object.defineProperty(global_container[ id],'values',{value:[],writable:true,enumerable:true});
+  }else {
+    var tmp_arr = [];
+    // console.log(this.input_collection);
+    this.input_collection.forEach(function(item,i) {
+      tmp_arr.push(item.value);
+    });
+    console.log(tmp_arr);
+    global_container[ id].values = tmp_arr;
+
+    console.log(global_container);
   }
-  this.input_collection.forEach(function(item) {
-    global_container[ id].values[item.attributes.numeral.value] = item.value;
-  })
-  console.dir(global_container[ id].values);
-  console.log(JSON.stringify(global_container));
     cookies.set('bit2bit',JSON.stringify(global_container));
-    // console.log(cookies.get('bit2bit'));
+    console.log(JSON.stringify(global_container));
+
 }
 cookies_position(id,numeral_numb,numeral_word){//this.id not within scope of this function
-  // console.log(numeral_numb);
   if (!global_container.hasOwnProperty( id)) {//if widget container doesnt exist - create one.
     global_container[ id] = {};
   }
   if (!global_container[ id].hasOwnProperty('position')) {
-    // global_container[ id] = {position:{}};
     Object.defineProperty(global_container[ id],'position',{value:{},writable:true,enumerable:true});
+  }else {
+    global_container[ id].position = [numeral_word,numeral_numb];
   }
-  this.input_collection.forEach(function(item,i) {
-    global_container[ id].position[numeral_word[i]] = numeral_numb[i];
-  })
     cookies.set('bit2bit',JSON.stringify(global_container));
-    console.log(cookies.get('bit2bit'));
+    console.log(JSON.stringify(global_container));
 }
 
 

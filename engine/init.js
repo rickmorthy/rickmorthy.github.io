@@ -10,12 +10,9 @@
     'engine/model.js',
     'engine/control.js',
     'engine/view.js',
-    // 'engine/constructor.js',
-    // 'js/model.js',
-    // 'js/main.js'
   ];
-  var snippets = 'first string',
-  snippetsArray;
+  // var snippets = 'first string',
+  // snippetsArray;
 
   for (var i = 0; i < assetBundle.length; i++) {
     // console.log(assetBundle[i]);

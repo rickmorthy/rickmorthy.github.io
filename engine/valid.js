@@ -18,14 +18,13 @@ class Valid {
     }else if (this.numeral === '2' && this.length % 4 !== 0 && /[2-9a-zA-Z]/g.test(this.element.value === true)) {
       this.setFlag = false;
       this.element.style.background = '#FA8072';
-    }else if (this.numeral === '16' && this.length < 4  ) {
-      if (/[g-zG-Z]/g.test(this.element.value === true)) {
+    }else if (this.numeral === '16'  ) {
+      console.log('This is hex');
+      this.setFlag = false;
+      this.element.style.background = '#FA8072';
+      if (/[g-zG-Z]/g.test(this.element.value) ) {
         console.log(/[g-zG-Z]/g.test(this.element.value));
         this.element.value = this.element.value.slice(0,-1);
-      }else {
-        this.setFlag = false;
-        this.element.style.background = '#FA8072';
-
       }
 
       }else{
@@ -37,5 +36,6 @@ class Valid {
    warning(){
 
   }
+
 
 }
