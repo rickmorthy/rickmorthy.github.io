@@ -19,7 +19,7 @@ class Valid {
       this.setFlag = false;
       this.element.style.background = '#FA8072';
     }else if (this.numeral === '16'  ) {
-      console.log('This is hex');
+      // console.log('This is hex');
       this.setFlag = false;
       this.element.style.background = '#FA8072';
       if (/[g-zG-Z]/g.test(this.element.value) ) {

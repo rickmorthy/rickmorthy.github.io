@@ -4,6 +4,7 @@
     'js/popper.min.js',
     'js/bootstrap.min.js',
     'js/clipboard.js-master/dist/clipboard.min.js',
+    'engine/cookies.js',
     'engine/valid.js',
     'engine/engine.js',
     'engine/actions.js',

@@ -8,7 +8,8 @@ class Actions extends Valid{
     this.element = element;
     this.input_collection = document.querySelectorAll('.widget'+this.id+' input');
     // this.object = global_container[id];
-    this.obj = {};
+    this.obj = {},
+    this.cookies_c = new Cookies(this.input_collection,this.collection_of_words);
     // console.log(this.input_collection[0]);
   }
   check(){
@@ -43,11 +44,11 @@ class Actions extends Valid{
      this.result.length === 0 ? this.orig[i].value = '' : this.orig[i].value = this.result[i];//check of this properties exist int THIS object
    }
  }
- collection(id,bool){
+ collection(id,bool){//returns
    var collection_of_numbs = document.querySelectorAll('.numeral_numb'+id),
        numeral = [];
        numeral.push(...collection_of_numbs);
-       console.log(numeral);
+       // console.log(numeral);
        if(bool === true){
          return numeral.map(function(i) {
            console.log(i.attributes.numeral.value);
@@ -60,7 +61,7 @@ class Actions extends Valid{
    var inputs = input_set,
        tmp,
        input_attr_map = [];
-       console.log(inputs);
+       // console.log(inputs);
        inputs.forEach(function(item) {
          input_attr_map.push(item.attributes.numeral.value);
        });
@@ -78,6 +79,9 @@ class Actions extends Valid{
    })
  }
 
+get collection_of_words(){
+  return document.querySelectorAll('.numeral_word'+this.id);
+}
    //buildAction collects all nodes with certain selector, place picked node on the first place
    // and assign new array to these nodes.
    //Serves for reassign .dropdown-items
@@ -90,11 +94,11 @@ class Actions extends Valid{
             values = [],
             value_element,
             numeral_values = [],
-            collection_of_words = document.querySelectorAll('.numeral_word'+this.id),
+            // collection_of_words = document.querySelectorAll('.numeral_word'+this.id),
             collection_of_inputs = this.input_collection,
             collection_of_numbs = this.collection(this.id),
             collection_of_toggle = document.querySelectorAll('.dropdown'+this.id);
-            console.log(this.id);
+            // console.log(this.id);
           //   this.input_collection.forEach(function(item,index,arr) {
           //   global_container['widget'+this.id].values[item.attributes.numeral.value] = item.value;
           // });
@@ -112,22 +116,22 @@ class Actions extends Valid{
         values.rotate(value_element);
 
         numeral_numb = this.collection(this.id,true);
-        console.log(this.collection(this.id,true));
+        // console.log(this.collection(this.id,true));
         numeral_numb.rotate(this.element.attributes.numeral.value);//rotate() located in init.js
-        console.log(numeral_numb);
-        numeral_word.push(...collection_of_words);
+        // console.log(numeral_numb);
+        numeral_word.push(...this.collection_of_words);
         numeral_word = numeral_word.map(function(i) {return i.innerHTML});
         numeral_word.rotate(this.element.innerHTML);//rotate() located in init.js
 
         numeral_word.map(function(item,i,arr) {
-          collection_of_words[i].innerHTML = item;
+          this.collection_of_words[i].innerHTML = item;
           collection_of_numbs[i].attributes.numeral.value = numeral_numb[i];
           collection_of_toggle[i].innerHTML = item;
           collection_of_toggle[i].attributes.numeral.value = numeral_numb[i];
           // console.log(this);
           collection_of_inputs[i].value = values[i];
-        })
-        this.cookies_position(this.id,numeral_numb,numeral_word);
+        },this)
+        this.cookies_c.cookies_position(this.id,numeral_numb,numeral_word);
 };
 
 
@@ -162,7 +166,7 @@ class Actions extends Valid{
        }else {
          this.assignValues.call(obj);
        }
-       this.cookies_value(this.id);
+       this.cookies_c.cookies_value(this.id);
        return this;
    }
 
@@ -216,52 +220,12 @@ _twos_conversion(){
         // obj.func = () => { return ''; }
         this.assignValues.call(obj);
       }
-      this.cookies_value(this.id);
+      this.cookies_c.cookies_value(this.id);
       return this;
   }
 
 }
-cookies_value(id){
-  if (!global_container.hasOwnProperty( id)) {//if widget container doesnt exist - create one.
-    global_container[id] = {};
-  }
-  if (!global_container[ id].hasOwnProperty('values')) {
-    Object.defineProperty(global_container[ id],'values',{value:[],writable:true,enumerable:true});
-  }
-  // else {
-    var tmp_arr = [];
-    // console.log(this.input_collection);
-    this.input_collection.forEach(function(item,i) {
-      tmp_arr.push(item.value);
-    });
-    console.log(tmp_arr);
-    global_container[ id].values = tmp_arr;
 
-    console.log(global_container);
-  // }
-    cookies.set('bit2bit',JSON.stringify(global_container));
-    console.log(JSON.stringify(global_container));
-
-}
-cookies_position(id,numeral_numb,numeral_word){//this.id not within scope of this function
-  if (!global_container.hasOwnProperty( id)) {//if widget container doesnt exist - create one.
-    global_container[ id] = {};
-  }
-  if (!global_container[ id].hasOwnProperty('position')) {
-    Object.defineProperty(global_container[ id],'position',{value:{},writable:true,enumerable:true});
-  }
-  // else {
-    global_container[ id].position = [numeral_word,numeral_numb];
-    var tmp_arr = [];
-    this.input_collection.forEach(function(item,i) {
-      tmp_arr.push(item.value);
-    });
-    console.log(tmp_arr);
-    global_container[ id].values = tmp_arr;
-  // }
-    cookies.set('bit2bit',JSON.stringify(global_container));
-    console.log(JSON.stringify(global_container));
-}
 
 
 }
