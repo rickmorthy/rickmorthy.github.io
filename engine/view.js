@@ -40,11 +40,15 @@ function fillUp(json){
 
           console.log(json);
           input.forEach(function(item,i) {
-            cookie[elem].position.length === 0 ? true: item.attributes.numeral.value = cookie[elem].position[1][i];
             cookie[elem].values.length === 0 ? true : item.value = cookie[elem].values[i];
-            label[i].innerHTML = cookie[elem].position[0][i];
-            toggle[i].innerHTML = cookie[elem].position[0][i];
-            toggle[i].attributes.numeral.value = cookie[elem].position[1][i];
+            if (cookie[elem].hasOwnProperty('position')) {
+              item.attributes.numeral.value = cookie[elem].position[1][i]
+              label[i].innerHTML = cookie[elem].position[0][i];
+              toggle[i].innerHTML = cookie[elem].position[0][i];
+              toggle[i].attributes.numeral.value = cookie[elem].position[1][i];
+            }
+            // !cookie[elem].hasOwnProperty('position') ? true : item.attributes.numeral.value = cookie[elem].position[1][i];
+            // console.log(label[i].innerHTML);
 
           })
     }

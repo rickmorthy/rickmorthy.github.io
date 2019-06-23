@@ -227,7 +227,8 @@ cookies_value(id){
   }
   if (!global_container[ id].hasOwnProperty('values')) {
     Object.defineProperty(global_container[ id],'values',{value:[],writable:true,enumerable:true});
-  }else {
+  }
+  // else {
     var tmp_arr = [];
     // console.log(this.input_collection);
     this.input_collection.forEach(function(item,i) {
@@ -237,7 +238,7 @@ cookies_value(id){
     global_container[ id].values = tmp_arr;
 
     console.log(global_container);
-  }
+  // }
     cookies.set('bit2bit',JSON.stringify(global_container));
     console.log(JSON.stringify(global_container));
 
@@ -248,9 +249,16 @@ cookies_position(id,numeral_numb,numeral_word){//this.id not within scope of thi
   }
   if (!global_container[ id].hasOwnProperty('position')) {
     Object.defineProperty(global_container[ id],'position',{value:{},writable:true,enumerable:true});
-  }else {
-    global_container[ id].position = [numeral_word,numeral_numb];
   }
+  // else {
+    global_container[ id].position = [numeral_word,numeral_numb];
+    var tmp_arr = [];
+    this.input_collection.forEach(function(item,i) {
+      tmp_arr.push(item.value);
+    });
+    console.log(tmp_arr);
+    global_container[ id].values = tmp_arr;
+  // }
     cookies.set('bit2bit',JSON.stringify(global_container));
     console.log(JSON.stringify(global_container));
 }
