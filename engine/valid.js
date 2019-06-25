@@ -1,12 +1,9 @@
 class Valid {
   constructor() {
-    // this.target = target;
     this.flag = true;
-
   }
+
   check(elem){
-    // console.dir(this.value);
-    console.log(elem);
     this.element = elem;
     this.length = parseInt(this.element.value.toString().length,10);
     this.numeral = this.element.attributes.numeral.value;//number of symbols

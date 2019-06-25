@@ -12,33 +12,10 @@ class Actions{
     this.cookies_c = new Cookies(this.input_collection,this.collection_of_words);
     // console.log(this.input_collection[0]);
   }
-  // check(){
-  //   super.check();
-  // }
 
-  addEvent(){
-    // if (this.element.onkeypress === null) {
-    //   this.element.onkeypress = new Valid(this.element);
-    // var that = this ;
-    // $(this.element).keyup(function(event) {
-    //   console.log(event );
-    //   that.check();
-    //   key = event.key;
-    //
-    //
-    // })
-    // this.element.onkeypress = this.check();
-    // this.element.onkeypress = function(event) {
-    //   console.log('this works');
-    //   console.log(key);
-    // };
-    // console.dir(this.flag);
-
-    // console.dir(this.element);
-    // return this;
-  }
   // Sets value to array of Elements
  assignValues() {
+   console.log(this.orig);
    for (var i = 1; i < this.orig.length; i++) {
      this.result.length === 0 ? this.orig[i].value = '' : this.orig[i].value = this.result[i];//check of this properties exist int THIS object
    }
@@ -78,30 +55,7 @@ class Actions{
    })
  }
 
-get collection_of_words(){
-  var tmp = [];
-  document.querySelectorAll('.numeral_word'+this.id).forEach(function(e,i,a){
-    tmp.push(e.innerHTML);
-    });
-  return tmp;
-}
-get collection_of_numbs(){
-  var tmp = [];
-  document.querySelectorAll('.numeral_numb'+this.id).forEach(function(e,i,a){
-    tmp.push(e.attributes.numeral.value);
-    });
-  return tmp;
-}
-get collection_of_values(){
-  var tmp = [];
-  document.querySelectorAll('.numeral_numb'+this.id).forEach(function(e,i,a){
-    tmp.push(e.value);
-    });
-  return tmp;
-}
-get collection_of_labels(){
-  return document.querySelectorAll('.numeral_word'+this.id);
-}
+
    //buildAction collects all nodes with certain selector, place picked node on the first place
    // and assign new array to these nodes.
    //Serves for reassign .dropdown-items
@@ -156,7 +110,7 @@ get collection_of_labels(){
  _conversion() {
    // console.log('here');
    if (this.flag === true) {
-     var obj = {
+      var obj = {
          orig:this.collection(this.id),
          values:this.collection(this.id,true),
          result:[]
@@ -195,8 +149,8 @@ _twos_conversion(){
   // this.eventListener();
   // console.dir(window.getEventListeners());
   if (validation_flag === true) {
-    // var manip = new Manipulation(),
-    var obj = {
+    var manip = new Manipulation(),
+        obj = {
             orig:this.collection(this.id),
             values:this.collection(this.id,true),
             result:[]
@@ -206,7 +160,6 @@ _twos_conversion(){
         pointer = this.element.attributes.numeral.value,
         final_values = {};
 
-        console.log('THIS');
     if (this.element.value !== '') {
       // console.log(pointer);
       switch (pointer) {
@@ -247,7 +200,30 @@ _twos_conversion(){
   }
 
 }
-
+get collection_of_words(){
+  var tmp = [];
+  document.querySelectorAll('.numeral_word'+this.id).forEach(function(e,i,a){
+    tmp.push(e.innerHTML);
+    });
+  return tmp;
+}
+get collection_of_numbs(){
+  var tmp = [];
+  document.querySelectorAll('.numeral_numb'+this.id).forEach(function(e,i,a){
+    tmp.push(e.attributes.numeral.value);
+    });
+  return tmp;
+}
+get collection_of_values(){
+  var tmp = [];
+  document.querySelectorAll('.numeral_numb'+this.id).forEach(function(e,i,a){
+    tmp.push(e.value);
+    });
+  return tmp;
+}
+get collection_of_labels(){
+  return document.querySelectorAll('.numeral_word'+this.id);
+}
 
 
 }

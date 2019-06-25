@@ -23,7 +23,6 @@ class Control{
         widget += this.model.pano_result(this.key[i], i, this.values[i]);
       }
       widget += this.model.closure('end');
-
       return jQuery.parseHTML(widget);
     };
     set global_obj(object){

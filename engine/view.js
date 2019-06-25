@@ -1,6 +1,6 @@
 /// var arr = ['Decimal','Binary','Hexadecimal','Other'];
 var global_container = {},
-    key = 'default',
+    key_pressed = Date.now(),
     validation_flag = true,
     reg_con = {'Decimal':10,'Binary':2,'Hexadecimal':16,'Octal':8},
     twos_conv = {'Decimal':10,'Binary':2,'Hexadecimal':16};
@@ -18,7 +18,7 @@ size:'6',
 id:'_conversion',//both as selector and as method name called in Actions()
 }).widget());
 
-
+console.log(key_pressed);
 
 var bit2bit = cookies.get('bit2bit'),
     cook = new Cookies();
@@ -27,12 +27,14 @@ if (bit2bit !== undefined) {
   cook.fillUp(bit2bit);
 }
 
-// $('.main-frame input').keyup(function(event) {
-//   var validation = new Valid();
-//   console.log(key);
-//   validation.check(this);
-//   key = event.key;
-//   console.log(key);
-//
-//
-// })
+// console.log($('.main-frame input'));
+  $('.main-frame input').keydown(function(event) {
+    key_pressed = Date.now();
+      // var validation = new Valid();
+      // console.log(key);
+      // validation.check(this);
+      // key = event.key;
+      // console.log(key);
+
+
+    })
