@@ -29,6 +29,25 @@
     return this;
   }
 }());
+Array.prototype.findMatch = function (array) {
+  var flag;
+  for(var i = 0; i < array.length; i++) {
+    console.log(array);
+    if (array[i] === array.map((u) => {;return u;})) {
+      console.log('HERE');
+      flag = true;
+      console.log(flag);
+      break;
+      // return false;
+    }else {
+      // return false;
+
+    }
+
+  }
+  return flag;
+};
+console.log(new Array());
 // $('.main-frame input').keyup(function(event) {
 //   var validation = new Valid();
 //   console.log(key);

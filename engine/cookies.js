@@ -4,6 +4,10 @@ class Cookies {
     this.input_collection = inputs;
     this.collection_of_labels = words;
     this.tmp_arr = [];
+    this.prop_ignore = [// ignore properties in global_container when restore data to inputs
+      'history',
+      'key_pressed'
+    ]
   }
 
   fillUp(json){ // uploads result saved in cookies into widget
@@ -44,9 +48,14 @@ class Cookies {
       var end = 2000,
           count_down = Date.now() - key_pressed,
           that = this;
+          Object.keys(global_container).findMatch(this.prop_ignore);
+          // console.log(Object.keys(global_container).findMatch(this.prop_ignore));
+          return false;
+          console.log(global_container.time);
           // console.log(Date.now() - key_pressed);
-          console.log(key_pressed);
+          // console.log(key_pressed);
           console.log(Date.now());
+          console.log(Date.now() - global_container.time);
         if (Date.now() - key_pressed >= 2000) {
               console.log('Result saved in history!');
               that.set_history(numeral_numb,numeral_word);
