@@ -1,5 +1,7 @@
 /// var arr = ['Decimal','Binary','Hexadecimal','Other'];
 var global_container = {},
+    key = 'default',
+    validation_flag = true,
     reg_con = {'Decimal':10,'Binary':2,'Hexadecimal':16,'Octal':8},
     twos_conv = {'Decimal':10,'Binary':2,'Hexadecimal':16};
 
@@ -24,3 +26,13 @@ if (bit2bit !== undefined) {
   global_container = JSON.parse(bit2bit);
   cook.fillUp(bit2bit);
 }
+
+// $('.main-frame input').keyup(function(event) {
+//   var validation = new Valid();
+//   console.log(key);
+//   validation.check(this);
+//   key = event.key;
+//   console.log(key);
+//
+//
+// })

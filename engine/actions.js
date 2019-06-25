@@ -1,42 +1,41 @@
 //
 
-class Actions extends Valid{
+class Actions{
   constructor(element,id,flag) {
-    super(flag);
+    // super(flag);
     this.id = id;
     // console.log(this.id);
     this.element = element;
     this.input_collection = document.querySelectorAll('.widget'+this.id+' input');
-    // this.object = global_container[id];
-    this.obj = {},
+    this.numeral_word = [],
+    this.numeral_numb = [],
     this.cookies_c = new Cookies(this.input_collection,this.collection_of_words);
     // console.log(this.input_collection[0]);
   }
-  check(){
-    super.check();
-  }
-  // get input_collection(){
-  //   return document.querySelectorAll('.widget'+this.id+' input');
+  // check(){
+  //   super.check();
   // }
-  // set_cookies(id){
-  //   var obj = {};
-  //   // this.inputs_collection.
-  //   console.log(this.input_collection);
-  //   global_container['widget'+id] = {values:{}};
-  //   this.input_collection.forEach(function(item) {
-  //     console.log(this);
-  //     global_container['widget'+id].values[item.attributes.numeral.value] = item.value;
-  //   })
-  //   console.log(JSON.stringify(global_container));
-  //   // this.cookies(this.id);
-  // }
+
   addEvent(){
     // if (this.element.onkeypress === null) {
     //   this.element.onkeypress = new Valid(this.element);
-    // }
-    this.element.onkeypress = this.check();
+    // var that = this ;
+    // $(this.element).keyup(function(event) {
+    //   console.log(event );
+    //   that.check();
+    //   key = event.key;
+    //
+    //
+    // })
+    // this.element.onkeypress = this.check();
+    // this.element.onkeypress = function(event) {
+    //   console.log('this works');
+    //   console.log(key);
+    // };
     // console.dir(this.flag);
-    return this;
+
+    // console.dir(this.element);
+    // return this;
   }
   // Sets value to array of Elements
  assignValues() {
@@ -51,7 +50,7 @@ class Actions extends Valid{
        // console.log(numeral);
        if(bool === true){
          return numeral.map(function(i) {
-           console.log(i.attributes.numeral.value);
+           // console.log(i.attributes.numeral.value);
             return i.attributes.numeral.value});
        } else {
          return collection_of_numbs;
@@ -80,6 +79,27 @@ class Actions extends Valid{
  }
 
 get collection_of_words(){
+  var tmp = [];
+  document.querySelectorAll('.numeral_word'+this.id).forEach(function(e,i,a){
+    tmp.push(e.innerHTML);
+    });
+  return tmp;
+}
+get collection_of_numbs(){
+  var tmp = [];
+  document.querySelectorAll('.numeral_numb'+this.id).forEach(function(e,i,a){
+    tmp.push(e.attributes.numeral.value);
+    });
+  return tmp;
+}
+get collection_of_values(){
+  var tmp = [];
+  document.querySelectorAll('.numeral_numb'+this.id).forEach(function(e,i,a){
+    tmp.push(e.value);
+    });
+  return tmp;
+}
+get collection_of_labels(){
   return document.querySelectorAll('.numeral_word'+this.id);
 }
    //buildAction collects all nodes with certain selector, place picked node on the first place
@@ -88,8 +108,8 @@ get collection_of_words(){
    buildAction(){
      // console.log(this.input_collection);
         var button = $(this.element).html(),
-            numeral_word = [],
-            numeral_numb = [],
+            // numeral_word = [],
+            // numeral_numb = [],
             target_set = [],
             values = [],
             value_element,
@@ -115,23 +135,21 @@ get collection_of_words(){
         }
         values.rotate(value_element);
 
-        numeral_numb = this.collection(this.id,true);
+        this.numeral_numb = this.collection(this.id,true);
         // console.log(this.collection(this.id,true));
-        numeral_numb.rotate(this.element.attributes.numeral.value);//rotate() located in init.js
-        // console.log(numeral_numb);
-        numeral_word.push(...this.collection_of_words);
-        numeral_word = numeral_word.map(function(i) {return i.innerHTML});
-        numeral_word.rotate(this.element.innerHTML);//rotate() located in init.js
-
-        numeral_word.map(function(item,i,arr) {
-          this.collection_of_words[i].innerHTML = item;
-          collection_of_numbs[i].attributes.numeral.value = numeral_numb[i];
+        this.numeral_numb.rotate(this.element.attributes.numeral.value);//rotate() located in init.js
+        this.numeral_word.push(...this.collection_of_words);
+        this.numeral_word.rotate(this.element.innerHTML);//rotate() located in init.js
+        this.numeral_word.map(function(item,i,arr) {
+          // console.log(item);
+          this.collection_of_labels[i].innerHTML = item;
+          collection_of_numbs[i].attributes.numeral.value = this.numeral_numb[i];
           collection_of_toggle[i].innerHTML = item;
-          collection_of_toggle[i].attributes.numeral.value = numeral_numb[i];
+          collection_of_toggle[i].attributes.numeral.value = this.numeral_numb[i];
           // console.log(this);
           collection_of_inputs[i].value = values[i];
         },this)
-        this.cookies_c.cookies_position(this.id,numeral_numb,numeral_word);
+        this.cookies_c.cookies_value(this.id,this.collection_of_words,this.collection_of_values);
 };
 
 
@@ -166,7 +184,9 @@ get collection_of_words(){
        }else {
          this.assignValues.call(obj);
        }
-       this.cookies_c.cookies_value(this.id);
+       this.cookies_c.cookies_value(this.id,this.collection_of_words,this.collection_of_values);
+       console.log(this.numeral_numb,this.numeral_word);
+
        return this;
    }
 
@@ -174,9 +194,9 @@ get collection_of_words(){
 _twos_conversion(){
   // this.eventListener();
   // console.dir(window.getEventListeners());
-  if (this.flag === true) {
-    var manip = new Manipulation(),
-        obj = {
+  if (validation_flag === true) {
+    // var manip = new Manipulation(),
+    var obj = {
             orig:this.collection(this.id),
             values:this.collection(this.id,true),
             result:[]
@@ -186,6 +206,7 @@ _twos_conversion(){
         pointer = this.element.attributes.numeral.value,
         final_values = {};
 
+        console.log('THIS');
     if (this.element.value !== '') {
       // console.log(pointer);
       switch (pointer) {
@@ -220,7 +241,8 @@ _twos_conversion(){
         // obj.func = () => { return ''; }
         this.assignValues.call(obj);
       }
-      this.cookies_c.cookies_value(this.id);
+      this.cookies_c.cookies_value(this.id,this.collection_of_words,this.collection_of_values);
+
       return this;
   }
 

@@ -27,7 +27,7 @@ class Model {
       child_node.push(
         '</div>',
         '</div>',
-        '<input type="text" numeral="'+numeral+'" onkeyup="new Actions(this,'+this.method+').addEvent().'+this.id+'()" class="numeral_numb'+iter+' form-control" id="input'+this.id+'" aria-label="Text input with dropdown button">',
+        '<input type="text" numeral="'+numeral+'" onkeyup="new Actions(this,'+this.method+').'+this.id+'()" class="numeral_numb'+iter+' form-control" id="input'+this.id+'" aria-label="Text input with dropdown button">',
         '</div>',
         '</div>'
       );
