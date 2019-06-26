@@ -1,8 +1,8 @@
 //
 
-class Actions{
+class Actions extends Valid{
   constructor(element,id,flag) {
-    // super(flag);
+    super(check);
     this.id = id;
     // console.log(this.id);
     this.element = element;
@@ -11,6 +11,10 @@ class Actions{
     this.numeral_numb = [],
     this.cookies_c = new Cookies(this.input_collection,this.collection_of_words);
     // console.log(this.input_collection[0]);
+  }
+  validate(){
+    this.check();
+    return this;
   }
 
   // Sets value to array of Elements
@@ -108,7 +112,6 @@ class Actions{
 
 
  _conversion() {
-   // console.log('here');
    if (this.flag === true) {
       var obj = {
          orig:this.collection(this.id),
@@ -147,8 +150,10 @@ class Actions{
 }
 _twos_conversion(){
   // this.eventListener();
+
   // console.dir(window.getEventListeners());
-  if (validation_flag === true) {
+  if (this.flag === true) {
+    console.log('here');
     var manip = new Manipulation(),
         obj = {
             orig:this.collection(this.id),

@@ -8,27 +8,23 @@ class Cookies {
       'history',
       'key_pressed'
     ]
-    this.test = [
-      'a',
-      'b'
-    ]
   }
-
   fillUp(json){ // uploads result saved in cookies into widget
-    var cookie = JSON.parse(json);
-    for (var elem in cookie) {
-      if (cookie.hasOwnProperty(elem) && Object.keys(cookie).findMatch(this.prop_ignore)) {
+    // var cookie = JSON.parse();
+    global_container = JSON.parse(cookies.get('bit2bit'));
+    for (var elem in global_container) {
+      if (global_container.hasOwnProperty(elem) && Object.keys(global_container).findMatch(this.prop_ignore)) {
         var input = document.querySelectorAll('.widget'+elem+' input'),
             label = document.querySelectorAll('.numeral_word'+elem),
             toggle = document.querySelectorAll('.dropdown'+elem);
 
             input.forEach(function(item,i) {
-              cookie[elem].values.length === 0 ? true : item.value = cookie[elem].values[i];
-              if (cookie[elem].hasOwnProperty('position')) {
-                item.attributes.numeral.value = cookie[elem].position[1][i]
-                label[i].innerHTML = cookie[elem].position[0][i];
-                toggle[i].innerHTML = cookie[elem].position[0][i];
-                toggle[i].attributes.numeral.value = cookie[elem].position[1][i];
+              global_container[elem].values.length === 0 ? true : item.value = global_container[elem].values[i];
+              if (global_container[elem].hasOwnProperty('position')) {
+                item.attributes.numeral.value = global_container[elem].position[1][i]
+                label[i].innerHTML = global_container[elem].position[0][i];
+                toggle[i].innerHTML = global_container[elem].position[0][i];
+                toggle[i].attributes.numeral.value = global_container[elem].position[1][i];
               }
             })
       }
@@ -49,22 +45,18 @@ class Cookies {
       global_container[id].values = this.tmp_arr;
       cookies.set('bit2bit',JSON.stringify(global_container));
 
-      var end = 2000,
-          count_down = Date.now() - key_pressed,
-          that = this;
-          // Object.keys(global_container).findMatch(this.prop_ignore);
-          console.log(Object.keys(global_container).findMatch(this.prop_ignore));
-          return false;
-          console.log(global_container.time);
-          // console.log(Date.now() - key_pressed);
-          // console.log(key_pressed);
-          console.log(Date.now());
-          console.log(Date.now() - global_container.time);
-        if (Date.now() - key_pressed >= 2000) {
-              console.log('Result saved in history!');
-              that.set_history(numeral_numb,numeral_word);
-              key_pressed = Date.now();
+      var that = this;
+      console.log(key_pressed);
+      console.log(Date.now() - key_pressed);
+      if (Date.now() - key_pressed >= cookies_history_save_interval) {//save result in history if 3 seconds passed from last pressed key
+        console.log('Result saved in history!');
+        // TODO: dont let save first key press
+        that.set_history(numeral_numb,numeral_word);
+        key_pressed = Date.now();
+      }else {
+        key_pressed = Date.now();
       }
+
   }
 
   set_history(numeral_numb,numeral_word){
@@ -78,7 +70,7 @@ class Cookies {
         enumerable:true
       })
       cookies.set('bit2bit',JSON.stringify(global_container));
-    }else {
+    }else {//keeps 10 savings only
       if (global_container.history.length < 10) {
         global_container.history.unshift(tmp);
         cookies.set('bit2bit',JSON.stringify(global_container));
