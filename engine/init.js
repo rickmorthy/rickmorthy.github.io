@@ -30,31 +30,11 @@
   }
 }());
 Array.prototype.findMatch = function (array) {
-  var flag;
-  for(var i = 0; i < array.length; i++) {
-    console.log(array);
-    if (array[i] === array.map((u) => {;return u;})) {
-      console.log('HERE');
-      flag = true;
-      console.log(flag);
-      break;
-      // return false;
-    }else {
-      // return false;
-
+  for(var i = 0; i < this.length; i++) {
+    for (var y = 0; y < array.length; y++) {
+      if (this[i] === array[y]) {
+        return true;
+      }
     }
-
   }
-  return flag;
 };
-console.log(new Array());
-// $('.main-frame input').keyup(function(event) {
-//   var validation = new Valid();
-//   console.log(key);
-//   validation.check(this);
-//   key = event.key;
-//   console.log(key);
-//
-//
-//   return false;
-// })

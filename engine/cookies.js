@@ -8,12 +8,16 @@ class Cookies {
       'history',
       'key_pressed'
     ]
+    this.test = [
+      'a',
+      'b'
+    ]
   }
 
   fillUp(json){ // uploads result saved in cookies into widget
     var cookie = JSON.parse(json);
     for (var elem in cookie) {
-      if (cookie.hasOwnProperty(elem) && elem !== 'history') {
+      if (cookie.hasOwnProperty(elem) && Object.keys(cookie).findMatch(this.prop_ignore)) {
         var input = document.querySelectorAll('.widget'+elem+' input'),
             label = document.querySelectorAll('.numeral_word'+elem),
             toggle = document.querySelectorAll('.dropdown'+elem);
@@ -48,8 +52,8 @@ class Cookies {
       var end = 2000,
           count_down = Date.now() - key_pressed,
           that = this;
-          Object.keys(global_container).findMatch(this.prop_ignore);
-          // console.log(Object.keys(global_container).findMatch(this.prop_ignore));
+          // Object.keys(global_container).findMatch(this.prop_ignore);
+          console.log(Object.keys(global_container).findMatch(this.prop_ignore));
           return false;
           console.log(global_container.time);
           // console.log(Date.now() - key_pressed);
