@@ -23,12 +23,25 @@
 }
 
 .navbar-custom {
-  background: #484848;
+  background: #212529;
 }
 
 .settings {
-  background: #6c757d;
+  /* background: #6c757d; */
   /* margin-right: 0px; */
   padding-right: 0px;
   padding-left: 0px;
+}
+.table{
+  margin-bottom: 0px;
+}
+
+.navbar .navbar-nav.mr-auto{
+  float:right;
+}
+#main{
+  margin-top: 30px;
+}
+.hidden{
+  display: none;
 }

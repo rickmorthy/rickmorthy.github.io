@@ -47,11 +47,12 @@ class Cookies {
       this.tmp_arr.push(item.value);
     }, this);
     global_container[id].values = this.tmp_arr;
-    console.log(global_container);
+    // console.log(global_container);
     cookies.set('bit2bit', JSON.stringify(global_container));
 
     var that = this;
     if (Date.now() - key_pressed >= cookies_history_save_interval) { //save result in history if 3 seconds passed from last pressed key
+      // TODO: add statement
       that.set_history(collection[0], collection[2]);
       key_pressed = Date.now();
     } else {
@@ -72,15 +73,29 @@ class Cookies {
       })
       cookies.set('bit2bit', JSON.stringify(global_container));
     } else { //keeps 10 savings only
-      if (global_container.history.length < 10) {
+      if (global_container.history.length < 9) {
         global_container.history.unshift(tmp);
         cookies.set('bit2bit', JSON.stringify(global_container));
+        this.prepend_new_cookie(tmp);
+        // console.log('here');
       } else {
         global_container.history.pop();
         global_container.history.unshift(tmp);
         cookies.set('bit2bit', JSON.stringify(global_container));
+        this.prepend_new_cookie(tmp);
       }
     }
+  }
+  prepend_new_cookie(tmp){
+    var element = document.querySelectorAll('.settings table'),
+        table = jQuery.parseHTML(new Model().menu([tmp]));
+        table[0].style.opacity = 0;
+        element.forEach(function(node,i) {
+          element.length-1 === i ? node.parentNode.removeChild(node): true;
+        })
+
+    $('.settings').prepend(table);
+    $('.settings table:first-child').fadeTo('slow',1);
   }
 
 }

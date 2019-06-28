@@ -33,6 +33,7 @@ class Model {
       '</div>',
       '</div>'
     );
+    // console.log(child_node.join(''));
     return child_node.join('');
   };
   pano_result(label, iter, numeral) {
@@ -61,35 +62,36 @@ class Model {
     }
   }
 
-  menu() {
-    var cookie = JSON.parse(cookies.get('bit2bit'));
+  menu(param_arr) {
+    // var cookie = JSON.parse(cookies.get('bit2bit'));
     var history_menu = [];
-    console.log('HERE');
-    for (var i = 0; i < cookie.history.length; i++) {
-      history_menu.push([
-        '<table class="table">',
+    for (var i = 0; i < param_arr.length; i++) {
+      history_menu.push(
+        '<table class="table table-dark">',
         '<thead>',
         '<tr>'
-      ]);
-      cookie.history[i][0].map(function(e, i, a) {
+      );
+      // console.log(param_arr[i]);
+      param_arr[i][0].map(function(e, i, a) {
         history_menu.push('<th scope="col">' + e + '</th>');
       })
-      history_menu.push([
+      history_menu.push(
         '</tr>',
         '</thead>',
         '<tbody>',
         '<tr>'
-      ]);
-      cookie.history[i][1].map(function(e, i, a) {
+      );
+      param_arr[i][1].map(function(e, i, a) {
         history_menu.push('<td>' + e + '</td>');
       })
-      history_menu.push([
+      history_menu.push(
         '</tr>',
         '</tbody>',
         '</table>'
-      ])
+      )
     }
-    console.log(history_menu.join(" "));
+    // console.log(history_menu);
+    // console.log(history_menu.join(''));
     return history_menu.join('');
 
   }

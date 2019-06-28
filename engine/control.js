@@ -37,9 +37,11 @@ class Control {
     // global_container.log.push = object;
   }
   history_widget(){
-    // console.log(jQuery.parseHTML(this.model.menu()));
-    // console.log(this.model.menu);
-    return jQuery.parseHTML(this.model.menu());
+    if (window.navigator.cookieEnabled === true) {
+      var cookie_history_arr = JSON.parse(cookies.get('bit2bit')).history;
+      // console.log(cookie_history_arr);
+      return jQuery.parseHTML(this.model.menu(cookie_history_arr));
+    }
   }
 
 }

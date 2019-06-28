@@ -39,6 +39,11 @@ if (bit2bit !== undefined) {
   cook.fillUp(bit2bit);
 }
 
+$('#history').on('click',function() {
+  console.log('it works');
+  $('.settings').toggleClass('hidden');
+  $('#main').toggleClass('col-12').toggleClass('col-9',true);
+})
 
-console.dir(window.navigator.cookieEnabled);
-console.log(cookies.get('bit2bit'));
+// console.dir(window.navigator.cookieEnabled);
+// console.log(cookies.get('bit2bit'));
