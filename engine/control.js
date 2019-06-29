@@ -38,9 +38,15 @@ class Control {
   }
   history_widget(){
     if (window.navigator.cookieEnabled === true) {
-      var cookie_history_arr = JSON.parse(cookies.get('bit2bit')).history;
+      if (cookies.get('bit2bit') !== undefined && JSON.parse(cookies.get('bit2bit')).hasOwnProperty('history')) {
+        console.log('HERE');
+        var cookie_history_arr = JSON.parse(cookies.get('bit2bit')).history;
+        console.log(jQuery.parseHTML(this.model.menu(cookie_history_arr)));
+        return jQuery.parseHTML(this.model.menu(cookie_history_arr));
+      }else {
+        return '';
+      }
       // console.log(cookie_history_arr);
-      return jQuery.parseHTML(this.model.menu(cookie_history_arr));
     }
   }
 

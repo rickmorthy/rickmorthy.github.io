@@ -64,10 +64,11 @@ class Model {
 
   menu(param_arr) {
     // var cookie = JSON.parse(cookies.get('bit2bit'));
+    // console.log(window.navigator);
     var history_menu = [];
     for (var i = 0; i < param_arr.length; i++) {
       history_menu.push(
-        '<table class="table table-dark">',
+        '<table class="table table-light .table-hover">',
         '<thead>',
         '<tr>'
       );

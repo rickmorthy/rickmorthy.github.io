@@ -11,7 +11,7 @@ class Cookies {
   fillUp(json) { // uploads result saved in cookies into widget
     // var cookie = JSON.parse();
     global_container = JSON.parse(cookies.get('bit2bit'));
-    // console.log(json);
+    console.log(json);
     for (var elem in global_container) {
       if (global_container.hasOwnProperty(elem) && Object.keys(global_container).findMatch(this.prop_ignore)) {
         var input = document.querySelectorAll('.widget' + elem + ' input'),
@@ -50,10 +50,11 @@ class Cookies {
     // console.log(global_container);
     cookies.set('bit2bit', JSON.stringify(global_container));
 
-    var that = this;
+    // var that = this;
     if (Date.now() - key_pressed >= cookies_history_save_interval) { //save result in history if 3 seconds passed from last pressed key
       // TODO: add statement
-      that.set_history(collection[0], collection[2]);
+      this.set_history(collection[0], collection[2]);
+      console.log('Result has been saved to history');
       key_pressed = Date.now();
     } else {
       key_pressed = Date.now();
