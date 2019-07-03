@@ -24,19 +24,19 @@ class Control {
     }
     widget += this.model.closure('end');
     widget = jQuery.parseHTML(widget);
-    this.add_action(widget);
+    this.widget_action(widget);
     // this.add_cookie_action(widget);
     // console.log(node);
     // node[0].
 
     return widget;
   };
-  set global_obj(object) {
-    var length = Object.keys(global_container).length;
-    Object.defineProperty(global_container, 'widget' + object.id, {
-      value: object
-    });
-  }
+  // set global_obj(object) {
+  //   var length = Object.keys(global_container).length;
+  //   Object.defineProperty(global_container, 'widget' + object.id, {
+  //     value: object
+  //   });
+  // }
   history_widget() {
     if (window.navigator.cookieEnabled === true) {
       if (cookies.get('bit2bit') !== undefined && JSON.parse(cookies.get('bit2bit')).hasOwnProperty('history')) {
@@ -56,33 +56,30 @@ class Control {
   settings_widget(){
     var widget = [],
         fields = {
-          "History":"",
-          "Remember results":""
+          "history":"",
+          "remember_results":""
         },
-        obj = {};
-    // global_container.settings = fields;
-    console.log();
-    global_container.hasOwnProperty('settings') ? obj = global_container.settings : obj = fields;
-    if (global_container.hasOwnProperty('settings') && Object.keys(global_container.settings).length !== 0) {
-      // obj = global_container.settings;
-      for (var elem in global_container.settings) {
-        if (global_container.settings.hasOwnProperty(elem)) {
-          widget.push(...this.model.settings(elem,global_container.settings[elem]));
-        }
-      }
-      console.log(widget);
-    } else {
+        parsed_widget;
+    if (!global_container.hasOwnProperty('settings') || Object.keys(global_container.settings).length === 0) {
       global_container.settings = fields;
+    }
+    for (var elem in global_container.settings) {
+      if (global_container.settings.hasOwnProperty(elem)) {
+        widget.push(...this.model.settings(elem,global_container.settings[elem]));
+      }
     }
     $('#settings').on('click',function() {
       $('.sm-history').toggleClass('hidden');
     widget = jQuery.parseHTML(widget.join(''));
     })
-
-    console.log(jQuery.parseHTML(widget.join('')));
-    return jQuery.parseHTML(widget.join(''));
+    widget = jQuery.parseHTML(widget.join(''));
+    this.settings_action(widget);
+    // console.log(jQuery.parseHTML(widget.join('')));
+    return widget;
   }
-  add_action(widget) {
+
+
+  widget_action(widget) {
     var node = $(widget).find('input:first'),
       action = new Actions(node[0], this.id),
       cookie = new Cookies(document.core.input_collection(widget), action.collection_of_words),
@@ -93,6 +90,16 @@ class Control {
       action.validate();
       action[method]();
       cookie.cookies_value(that.id, action.collection_of_all);
+    })
+  }
+
+  settings_action(widget){
+    var node = $(widget).find('input');
+    $(node[0]).on('click',function() {
+      console.log(this.attributes.id.value,this.checked);
+      global_container.settings[this.attributes.id.value] = this.checked;
+      // console.log(global_container);
+      cookies.set('bit2bit',JSON.stringify(global_container));
     })
   }
 

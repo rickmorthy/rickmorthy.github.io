@@ -97,11 +97,15 @@ class Model {
 
   }
   settings(label,status) {
+    console.log(label);
+    var checked = status === true ? 'checked' : '',
+        strip_label = label.upCase();
+        console.log(strip_label);
     var html = [
       '<div class="form-check">',
-      '<input class="form-check-input" type="checkbox" value="" id="'+label+'" '+status+'>',
+      '<input class="form-check-input" type="checkbox" value="" id="'+label+'" '+checked+'>',
       '<label class="form-check-label" for="check'+label+'">',
-      label,
+      strip_label,
       '</label>',
       '</div>'
     ]

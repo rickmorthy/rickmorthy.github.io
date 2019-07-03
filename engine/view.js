@@ -1,6 +1,6 @@
 /// var arr = ['Decimal','Binary','Hexadecimal','Other'];
-var global_container = {},
-  key_pressed = 0,
+// var global_container = {},
+var  key_pressed = 0,
   cookies_history_save_interval = 5000,
   validation_flag = false,
   reg_con = {
@@ -52,15 +52,22 @@ $('.settings.dropdown-menu').prepend(new Control().settings_widget());
 
 
 
-
-var bit2bit = cookies.get('bit2bit'),
+console.log('HERE');
+(function () {
+  console.log(global_container);
+  var bit2bit = cookies.get('bit2bit'),
   cook = new Cookies();
-if (bit2bit !== undefined) {
-  global_container = JSON.parse(bit2bit);
-  cook.fillUp(bit2bit);
-}
+  if (cookies.get('bit2bit') !== undefined) {
+    global_container = JSON.parse(bit2bit);
+    console.log(global_container.settings);
+    if (global_container.settings.remember_results = true) {
+      cook.fillUp(bit2bit);
+    }
+  }
+}())
+
 $('.settings input').on('click',function () {
-  console.dir(this);
+  // console.dir(this);
   var state;
   this.checked = true ? state = true : state = false;
   var id = this.attributes.id.value;
