@@ -1,5 +1,6 @@
 ;(function () {
   var assetBundle = [
+    'engine/core.js',
     'js/cookies.js',
     'js/popper.min.js',
     'js/bootstrap.min.js',

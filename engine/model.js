@@ -29,7 +29,8 @@ class Model {
     child_node.push(
       '</div>',
       '</div>',
-      '<input type="text" numeral="' + numeral + '" onkeyup="new Actions(this,' + this.method + ').validate(this).' + this.id + '()" class="numeral_numb' + iter + ' form-control" id="input' + this.id + '" aria-label="Text input with dropdown button">',
+      '<input type="text" numeral="' + numeral + '"  class="numeral_numb' + iter + ' form-control" id="input' + this.id + '" aria-label="Text input with dropdown button">',
+      // '<input type="text" numeral="' + numeral + '" onkeyup="new Actions(this,' + this.method + ').validate(this).' + this.id + '()" class="numeral_numb' + iter + ' form-control" id="input' + this.id + '" aria-label="Text input with dropdown button">',
       '</div>',
       '</div>'
     );
@@ -62,9 +63,8 @@ class Model {
     }
   }
 
-  menu(param_arr) {
+  history(param_arr) {
     // var cookie = JSON.parse(cookies.get('bit2bit'));
-    // console.log(window.navigator);
     var history_menu = [];
     for (var i = 0; i < param_arr.length; i++) {
       history_menu.push(
@@ -95,5 +95,16 @@ class Model {
     // console.log(history_menu.join(''));
     return history_menu.join('');
 
+  }
+  settings(label,status) {
+    var html = [
+      '<div class="form-check">',
+      '<input class="form-check-input" type="checkbox" value="" id="'+label+'" '+status+'>',
+      '<label class="form-check-label" for="check'+label+'">',
+      label,
+      '</label>',
+      '</div>'
+    ]
+    return html;
   }
 };

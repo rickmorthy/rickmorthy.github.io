@@ -9,16 +9,13 @@ class Control {
       this.size = obj.size;
       this.id = obj.id;
       this.length = Object.keys(this.key).length;
+      this.collection_of_attr;
     }
-
     this.model = new Model(obj);
-    // console.log(global_container[widget1]);
-    // global_container['widget'+this.id] = {
-    //   values:{}
-    // }
   }
   widget(arr, size, number) {
-    var widget;
+    var widget,
+      node;
     widget = this.model.closure('start');
     // console.log(this.values);
     widget += this.model.pano_promt(this.key[0], this.id, this.values[0]);
@@ -26,28 +23,77 @@ class Control {
       widget += this.model.pano_result(this.key[i], i, this.values[i]);
     }
     widget += this.model.closure('end');
-    return jQuery.parseHTML(widget);
+    widget = jQuery.parseHTML(widget);
+    this.add_action(widget);
+    // this.add_cookie_action(widget);
+    // console.log(node);
+    // node[0].
+
+    return widget;
   };
   set global_obj(object) {
     var length = Object.keys(global_container).length;
     Object.defineProperty(global_container, 'widget' + object.id, {
       value: object
     });
-    // console.dir(length);
-    // global_container.log.push = object;
   }
-  history_widget(){
+  history_widget() {
     if (window.navigator.cookieEnabled === true) {
       if (cookies.get('bit2bit') !== undefined && JSON.parse(cookies.get('bit2bit')).hasOwnProperty('history')) {
-        console.log('HERE');
         var cookie_history_arr = JSON.parse(cookies.get('bit2bit')).history;
-        console.log(jQuery.parseHTML(this.model.menu(cookie_history_arr)));
-        return jQuery.parseHTML(this.model.menu(cookie_history_arr));
-      }else {
+        $('#history').on('click',function() {
+          if (append_history === '.history') {
+            $('#main').toggleClass('col-12').toggleClass('col-9',true);
+          }
+          $(append_history).toggleClass('hidden');
+        })
+        return jQuery.parseHTML(this.model.history(cookie_history_arr));
+      } else {
         return '';
       }
-      // console.log(cookie_history_arr);
     }
+  }
+  settings_widget(){
+    var widget = [],
+        fields = {
+          "History":"",
+          "Remember results":""
+        },
+        obj = {};
+    // global_container.settings = fields;
+    console.log();
+    global_container.hasOwnProperty('settings') ? obj = global_container.settings : obj = fields;
+    if (global_container.hasOwnProperty('settings') && Object.keys(global_container.settings).length !== 0) {
+      // obj = global_container.settings;
+      for (var elem in global_container.settings) {
+        if (global_container.settings.hasOwnProperty(elem)) {
+          widget.push(...this.model.settings(elem,global_container.settings[elem]));
+        }
+      }
+      console.log(widget);
+    } else {
+      global_container.settings = fields;
+    }
+    $('#settings').on('click',function() {
+      $('.sm-history').toggleClass('hidden');
+    widget = jQuery.parseHTML(widget.join(''));
+    })
+
+    console.log(jQuery.parseHTML(widget.join('')));
+    return jQuery.parseHTML(widget.join(''));
+  }
+  add_action(widget) {
+    var node = $(widget).find('input:first'),
+      action = new Actions(node[0], this.id),
+      cookie = new Cookies(document.core.input_collection(widget), action.collection_of_words),
+      method = this.id,
+      that = this;
+    $(node[0]).on('keyup', function() {
+      console.log(validation_flag);
+      action.validate();
+      action[method]();
+      cookie.cookies_value(that.id, action.collection_of_all);
+    })
   }
 
 }

@@ -1,41 +1,61 @@
 class Valid {
   constructor() {
     this.flag = true;
+    this.good = '#AEEEEE';
+    this.bad = '#FA8072';
+    this.neutral = '#FFFFFF';
   }
 
   check(elem) {
+    console.log(validation_flag);
     this.element = elem;
     this.length = parseInt(this.element.value.toString().length, 10);
     this.numeral = this.element.attributes.numeral.value; //number of symbols
     this.value = this.element.value;
-    // console.log(/$[0-9]/g.test(this.value));
-    console.dir(this.element);
-    if (this.numeral === '10' && /[a-zA-Z]/g.test(this.value) === true) {
-      validation_flag = false;
-      this.element.style.background = '#FA8072';
-
-      this.element.value = this.element.value.slice(0, -1);
-    } else if (this.numeral === '2' && this.length % 4 !== 0 && /[2-9a-zA-Z]/g.test(this.element.value === true)) {
-      validation_flag = false;
-      this.element.style.background = '#FA8072';
-    } else if (this.numeral === '16') {
-      // console.log('This is hex');
-      validation_flag = false;
-      this.element.style.background = '#FA8072';
-      if (/[g-zG-Z]/g.test(this.element.value)) {
-        console.log(/[g-zG-Z]/g.test(this.element.value));
+    switch (this.numeral) {
+      case '10':
+      validation_flag = true;
+      this.element.style.background = this.neutral;
+        if (/[a-zA-Z]/g.test(this.value) === true) {
+          validation_flag = false;
+          this.element.style.background = this.bad;
+          this.element.value = this.element.value.slice(0, -1);
+        }
+        break;
+      case '2':
+      validation_flag = true;
+      this.element.style.background = this.neutral;
+        if (this.length % 4 !== 0) {
+          validation_flag = false;
+          this.element.style.background = '#FA8072';
+        }
+        if (/[2-9a-zA-Z]/g.test(this.element.value)) {
+          this.element.value = this.element.value.slice(0, -1);
+          this.element.style.background = this.bad;
+        }
+        break;
+      case '16':
+      validation_flag = true;
+      this.element.style.background = this.neutral;
+        if (/[g-zG-Z]/g.test(this.element.value)) {
+          validation_flag = false;
+          this.element.style.background = this.bad;
+          this.element.value = this.element.value.slice(0, -1);
+        }
+        break;
+      case '8':
+      validation_flag = true;
+      this.element.style.background = this.neutral;
+      if (/[9a-zA -Z]/g.test(this.element.value)) {
+        validation_flag = false;
+        this.element.style.background = this.bad;
         this.element.value = this.element.value.slice(0, -1);
       }
-
-    } else {
-      // this.element.style.background = '#FF0000';
-      this.element.style.background = '#AEEEEE';
-
+      default:
+        this.element.style.background = this.good;
     }
   }
-  warning() {
 
-  }
 
 
 }

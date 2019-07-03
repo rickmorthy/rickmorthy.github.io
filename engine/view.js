@@ -2,7 +2,7 @@
 var global_container = {},
   key_pressed = 0,
   cookies_history_save_interval = 5000,
-  validation_flag = true,
+  validation_flag = false,
   reg_con = {
     'Decimal': 10,
     'Binary': 2,
@@ -13,24 +13,45 @@ var global_container = {},
     'Decimal': 10,
     'Binary': 2,
     'Hexadecimal': 16
-  };
+  },
+  append_history;
 
-// console.log(global_container);
+/////////////////////////////
+//  bit conversion
+////////////////////////////
 $('.main-frame').prepend(new Control({
   obj: twos_conv,
   size: '6',
-  id: '_twos_conversion', //both as selector and as method name called in Actions()
+  id: '_twos_conversion',
 }).widget());
 
+/////////////////////////////
+//  twos complement to twos complement conversion
+////////////////////////////
 $('.main-frame').prepend(new Control({
   obj: reg_con,
   size: '6',
-  id: '_conversion', //both as selector and as method name called in Actions()
+  id: '_conversion',
 }).widget());
 
-$('.settings').prepend(new Control().history_widget());
 
-// console.log(key_pressed);
+/////////////////////////////
+//  display history
+////////////////////////////
+
+window.innerWidth > 998 ? append_history = '.history'  : append_history = '.sm-history' ;
+$(append_history).prepend(new Control().history_widget());
+
+/////////////////////////////
+//  settings widget
+////////////////////////////
+$('.settings.dropdown-menu').prepend(new Control().settings_widget());
+
+
+
+
+
+
 
 var bit2bit = cookies.get('bit2bit'),
   cook = new Cookies();
@@ -38,12 +59,17 @@ if (bit2bit !== undefined) {
   global_container = JSON.parse(bit2bit);
   cook.fillUp(bit2bit);
 }
-
-$('#history').on('click',function() {
-  console.log('it works');
-  $('.settings').toggleClass('hidden');
-  $('#main').toggleClass('col-12').toggleClass('col-9',true);
+$('.settings input').on('click',function () {
+  console.dir(this);
+  var state;
+  this.checked = true ? state = true : state = false;
+  var id = this.attributes.id.value;
+  if (!global_container.hasOwnProperty('settings')) {
+    console.log('GLOBAL');
+    Object.defineProperty(global_container,'settings',{
+      value:state,
+      enumerable:true
+    })
+  }
+console.log(global_container );
 })
-
-// console.dir(window.navigator.cookieEnabled);
-// console.log(cookies.get('bit2bit'));

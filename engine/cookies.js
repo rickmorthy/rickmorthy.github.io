@@ -1,8 +1,8 @@
-class Cookies {
+ class Cookies {
   constructor(inputs, words) {
     this.input_collection = inputs;
     this.collection_of_labels = words;
-    this.tmp_arr = [];
+    // this.tmp_arr = [];
     this.prop_ignore = [ // ignore properties in global_container when restore data to inputs
       'history',
       'key_pressed'
@@ -10,7 +10,7 @@ class Cookies {
   }
   fillUp(json) { // uploads result saved in cookies into widget
     // var cookie = JSON.parse();
-    global_container = JSON.parse(cookies.get('bit2bit'));
+    global_container = JSON.parse(json);
     console.log(json);
     for (var elem in global_container) {
       if (global_container.hasOwnProperty(elem) && Object.keys(global_container).findMatch(this.prop_ignore)) {
@@ -32,6 +32,7 @@ class Cookies {
   }
 
   cookies_value(id, collection) { //this.id not within scope of this function
+    var tmp_arr = [];
     if (!global_container.hasOwnProperty(id)) { //if widget container doesnt exist - create one.
       global_container[id] = {};
     }
@@ -43,16 +44,19 @@ class Cookies {
       });
     }
     global_container[id].position = [collection[0], collection[1]];
+    // console.log(this.input_collection);
     this.input_collection.forEach(function(item, i) {
-      this.tmp_arr.push(item.value);
+      tmp_arr.push(item.value);
     }, this);
-    global_container[id].values = this.tmp_arr;
+    // console.log(tmp_arr);
+    global_container[id].values = tmp_arr;
     // console.log(global_container);
     cookies.set('bit2bit', JSON.stringify(global_container));
 
     // var that = this;
-    if (Date.now() - key_pressed >= cookies_history_save_interval) { //save result in history if 3 seconds passed from last pressed key
+    if (Date.now() - key_pressed >= cookies_history_save_interval && validation_flag === true) { //save result in history if 3 seconds passed from last pressed key
       // TODO: add statement
+      // console.log(collection);
       this.set_history(collection[0], collection[2]);
       console.log('Result has been saved to history');
       key_pressed = Date.now();
@@ -63,6 +67,7 @@ class Cookies {
   }
 
   set_history(numeral_word, numeral_numb) {
+    // console.log(numeral_word, numeral_numb);
     var tmp = [];
     global_container = JSON.parse(cookies.get('bit2bit'));
     tmp.push(numeral_word, numeral_numb); //tmp will be stored in cookies
@@ -88,15 +93,16 @@ class Cookies {
     }
   }
   prepend_new_cookie(tmp){
-    var element = document.querySelectorAll('.settings table'),
-        table = jQuery.parseHTML(new Model().menu([tmp]));
+    console.log(tmp);
+    var element = document.querySelectorAll('.history table'),
+        table = jQuery.parseHTML(new Model().history([tmp]));
         table[0].style.opacity = 0;
         element.forEach(function(node,i) {
           element.length-1 === i ? node.parentNode.removeChild(node): true;
         })
 
-    $('.settings').prepend(table);
-    $('.settings table:first-child').fadeTo('slow',1);
+    $('.history').prepend(table);
+    $('.history table:first-child').fadeTo('slow',1);
   }
 
 }

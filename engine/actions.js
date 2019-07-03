@@ -4,7 +4,7 @@ class Actions extends Valid {
   constructor(element, id, flag, check) {
     super(check);
     this.id = id;
-    // console.log(this.id);
+    // console.log(element);
     this.element = element;
     this.input_collection = document.querySelectorAll('.widget' + this.id + ' input');
     this.numeral_word = [],
@@ -12,14 +12,14 @@ class Actions extends Valid {
       this.cookies_c = new Cookies(this.input_collection, this.collection_of_words);
     // console.log(this.input_collection[0]);
   }
-  validate(element) {
-    this.check(element);
+  validate() {
+    this.check(this.element);
     return this;
   }
 
   // Sets value to array of Elements
   assignValues() {
-    console.log(this.orig);
+    // console.log(this.orig);
     for (var i = 1; i < this.orig.length; i++) {
       this.result.length === 0 ? this.orig[i].value = '' : this.orig[i].value = this.result[i]; //check of this properties exist int THIS object
     }
@@ -66,6 +66,7 @@ class Actions extends Valid {
   //Serves for reassign .dropdown-items
   buildAction() {
     // console.log(this.input_collection);
+    // console.log('buildAction');
     var button = $(this.element).html(),
       // numeral_word = [],
       // numeral_numb = [],
@@ -142,7 +143,7 @@ class Actions extends Valid {
       } else {
         this.assignValues.call(obj);
       }
-      this.cookies_c.cookies_value(this.id, this.collection_of_all);
+      // this.cookies_c.cookies_value(this.id, this.collection_of_all);
       // console.log(this.numeral_numb,this.numeral_word);
 
       return this;
@@ -151,10 +152,11 @@ class Actions extends Valid {
   }
   _twos_conversion() {
     // this.eventListener();
-
+    // console.log('CONVERSION');
+    // console.log(validation_flag);
     // console.dir(window.getEventListeners());
     if (this.flag === true) {
-      console.log('here');
+      // console.log('here');
       var manip = new Manipulation(),
         obj = {
           orig: this.collection(this.id),
@@ -173,7 +175,7 @@ class Actions extends Valid {
             obj.result.push(
               this.element.value,
               tmp = manip.b2d(input_value),
-              manip.b2h(input_value) //<----!!!!
+              // manip.b2h(input_value) //<----!!!!
             )
             this.assignValues.call(obj);
             break;
@@ -200,7 +202,7 @@ class Actions extends Valid {
         // obj.func = () => { return ''; }
         this.assignValues.call(obj);
       }
-      this.cookies_c.cookies_value(this.id, this.collection_of_all);
+      // this.cookies_c.cookies_value(this.id, this.collection_of_all);
 
       return this;
     }
@@ -232,7 +234,7 @@ class Actions extends Valid {
   }
   get collection_of_all() {
     var tmp = [];
-    console.log(tmp);
+    // console.log(tmp);
     tmp.push(
       this.collection_of_words,
       this.collection_of_numbs,

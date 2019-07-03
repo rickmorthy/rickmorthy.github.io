@@ -45,3 +45,7 @@
 .hidden{
   display: none;
 }
+.settings.dropdown-menu {
+  padding: 5px;
+  
+}
