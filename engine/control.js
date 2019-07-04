@@ -31,12 +31,7 @@ class Control {
 
     return widget;
   };
-  // set global_obj(object) {
-  //   var length = Object.keys(global_container).length;
-  //   Object.defineProperty(global_container, 'widget' + object.id, {
-  //     value: object
-  //   });
-  // }
+
   history_widget() {
     if (window.navigator.cookieEnabled === true) {
       if (cookies.get('bit2bit') !== undefined && JSON.parse(cookies.get('bit2bit')).hasOwnProperty('history')) {
@@ -47,6 +42,9 @@ class Control {
           }
           $(append_history).toggleClass('hidden');
         })
+        if (global_container.settings.history === true) {
+          $('.history, .sm-history').removeClass('hidden');
+        }
         return jQuery.parseHTML(this.model.history(cookie_history_arr));
       } else {
         return '';
@@ -60,6 +58,9 @@ class Control {
           "remember_results":""
         },
         parsed_widget;
+        if (window.innerWidth < 998) {
+          $('#settings').parent().removeClass('dropright').addClass('dropleft');
+        }
     if (!global_container.hasOwnProperty('settings') || Object.keys(global_container.settings).length === 0) {
       global_container.settings = fields;
     }
@@ -69,7 +70,7 @@ class Control {
       }
     }
     $('#settings').on('click',function() {
-      $('.sm-history').toggleClass('hidden');
+      // $('.sm-history').toggleClass('hidden');
     widget = jQuery.parseHTML(widget.join(''));
     })
     widget = jQuery.parseHTML(widget.join(''));
@@ -86,7 +87,6 @@ class Control {
       method = this.id,
       that = this;
     $(node[0]).on('keyup', function() {
-      console.log(validation_flag);
       action.validate();
       action[method]();
       cookie.cookies_value(that.id, action.collection_of_all);
@@ -95,12 +95,11 @@ class Control {
 
   settings_action(widget){
     var node = $(widget).find('input');
-    $(node[0]).on('click',function() {
-      console.log(this.attributes.id.value,this.checked);
-      global_container.settings[this.attributes.id.value] = this.checked;
-      // console.log(global_container);
+    $(node).click(function() {
+      global_container.settings[this.attributes.notid.value] = this.checked;
       cookies.set('bit2bit',JSON.stringify(global_container));
     })
   }
+
 
 }

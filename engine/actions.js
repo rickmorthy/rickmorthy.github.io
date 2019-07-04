@@ -17,14 +17,14 @@ class Actions extends Valid {
     return this;
   }
 
-  // Sets value to array of Elements
+// assigns values to set of selected elements
   assignValues() {
     // console.log(this.orig);
     for (var i = 1; i < this.orig.length; i++) {
       this.result.length === 0 ? this.orig[i].value = '' : this.orig[i].value = this.result[i]; //check of this properties exist int THIS object
     }
   }
-  collection(id, bool) { //returns
+  collection(id, bool) { //returns attributes of .numeral_numb collection; if boolean not specified - returns just set of elements
     var collection_of_numbs = document.querySelectorAll('.numeral_numb' + id),
       numeral = [];
     numeral.push(...collection_of_numbs);
@@ -124,6 +124,8 @@ class Actions extends Valid {
         switch (this.element.attributes.numeral.value) {
           case '16':
             obj.orig.forEach(function(item) {
+              console.log(obj.orig[0].value);
+              console.log(parseInt(obj.orig[0].value, 16));
               obj.result.push(parseInt(obj.orig[0].value, 16).toString(item.attributes.numeral.value));
             });
             this.assignValues.call(obj);

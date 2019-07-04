@@ -1,3 +1,4 @@
+
 var core = {
   input_collection:function(widget) {
     var node = $(widget).find('input'),
@@ -32,15 +33,16 @@ String.prototype.upCase = function () {
   tmp = this.charAt(0).toUpperCase() + this.slice(1);
   return tmp.replace('_',' ');
 }
+
 var global_container = {};
+
+
 (function () {
-  // console.log(cookies.get('bit2bit'));
   if (cookies.get('bit2bit') !== undefined) {
     global_container = JSON.parse(cookies.get('bit2bit'));
  }else {
     global_container = {};
  }
- console.log(global_container);
 }())
 
 

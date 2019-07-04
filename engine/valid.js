@@ -7,7 +7,6 @@ class Valid {
   }
 
   check(elem) {
-    console.log(validation_flag);
     this.element = elem;
     this.length = parseInt(this.element.value.toString().length, 10);
     this.numeral = this.element.attributes.numeral.value; //number of symbols

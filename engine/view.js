@@ -52,31 +52,28 @@ $('.settings.dropdown-menu').prepend(new Control().settings_widget());
 
 
 
-console.log('HERE');
 (function () {
-  console.log(global_container);
   var bit2bit = cookies.get('bit2bit'),
   cook = new Cookies();
   if (cookies.get('bit2bit') !== undefined) {
     global_container = JSON.parse(bit2bit);
-    console.log(global_container.settings);
     if (global_container.settings.remember_results = true) {
       cook.fillUp(bit2bit);
     }
   }
 }())
 
-$('.settings input').on('click',function () {
-  // console.dir(this);
-  var state;
-  this.checked = true ? state = true : state = false;
-  var id = this.attributes.id.value;
-  if (!global_container.hasOwnProperty('settings')) {
-    console.log('GLOBAL');
-    Object.defineProperty(global_container,'settings',{
-      value:state,
-      enumerable:true
-    })
-  }
-console.log(global_container );
-})
+// $('.settings input').on('click',function () {
+//   // console.dir(this);
+//   var state;
+//   this.checked = true ? state = true : state = false;
+//   var id = this.attributes.id.value;
+//   if (!global_container.hasOwnProperty('settings')) {
+//     console.log('GLOBAL');
+//     Object.defineProperty(global_container,'settings',{
+//       value:state,
+//       enumerable:true
+//     })
+//   }
+// console.log(global_container );
+// })
