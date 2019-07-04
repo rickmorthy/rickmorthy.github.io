@@ -1,17 +1,14 @@
-
-var core = {
-  input_collection:function(widget) {
-    var node = $(widget).find('input'),
-        tmp = [];
-    node.each(function(e,i,a){
-      tmp.push(node[e]);
-      })
-    return tmp;
-  }
-}
-
-document.core = core;
-
+Array.prototype.scriptLoader = function(async) {
+  this.map(function(e, i, a) {
+    var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = e;
+        script.async = async || false;
+    var scr = document.getElementsByTagName("script")[0];
+        scr.parentNode.insertBefore(script, null);
+    console.dir(script.async);
+  });
+};
 Array.prototype.rotate = function (first) {
   console.log(first);
   this.splice(this.indexOf(first),1);
@@ -33,17 +30,3 @@ String.prototype.upCase = function () {
   tmp = this.charAt(0).toUpperCase() + this.slice(1);
   return tmp.replace('_',' ');
 }
-
-var global_container = {};
-
-
-(function () {
-  if (cookies.get('bit2bit') !== undefined) {
-    global_container = JSON.parse(cookies.get('bit2bit'));
- }else {
-    global_container = {};
- }
-}())
-
-
-// console.log(global_container);
