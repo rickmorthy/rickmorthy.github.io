@@ -39,7 +39,7 @@ $('.main-frame').prepend(new Control({
 //  display history
 ////////////////////////////
 
-window.innerWidth > 998 ? append_history = '.history'  : append_history = '.sm-history' ;
+window.innerWidth >= 992 ? append_history = '.history'  : append_history = '.sm-history' ;
 $(append_history).prepend(new Control().history_widget());
 
 /////////////////////////////
@@ -47,11 +47,9 @@ $(append_history).prepend(new Control().history_widget());
 ////////////////////////////
 $('.settings.dropdown-menu').prepend(new Control().settings_widget());
 
-
-
-
-
-
+///////////////////////////
+// Fills up inputs if checkbox checked
+///////////////////////////
 (function () {
   var bit2bit = cookies.get('bit2bit'),
   cook = new Cookies();
@@ -62,18 +60,3 @@ $('.settings.dropdown-menu').prepend(new Control().settings_widget());
     }
   }
 }())
-
-// $('.settings input').on('click',function () {
-//   // console.dir(this);
-//   var state;
-//   this.checked = true ? state = true : state = false;
-//   var id = this.attributes.id.value;
-//   if (!global_container.hasOwnProperty('settings')) {
-//     console.log('GLOBAL');
-//     Object.defineProperty(global_container,'settings',{
-//       value:state,
-//       enumerable:true
-//     })
-//   }
-// console.log(global_container );
-// })

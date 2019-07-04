@@ -38,7 +38,7 @@ class Control {
         var cookie_history_arr = JSON.parse(cookies.get('bit2bit')).history;
         $('#history').on('click',function() {
           if (append_history === '.history') {
-            $('#main').toggleClass('col-12').toggleClass('col-9',true);
+            $('#main').toggleClass('col-12').toggleClass('col-6',true);
           }
           $(append_history).toggleClass('hidden');
         })
@@ -101,5 +101,7 @@ class Control {
     })
   }
 
-
+  simple_widget(widget){
+     return jQuery.parseHTML(this.model.__proto__[widget]());
+  }
 }

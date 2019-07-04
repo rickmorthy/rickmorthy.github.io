@@ -6,7 +6,7 @@ Array.prototype.scriptLoader = function(async) {
         script.async = async || false;
     var scr = document.getElementsByTagName("script")[0];
         scr.parentNode.insertBefore(script, null);
-    console.dir(script.async);
+    // console.dir(script.async);
   });
 };
 Array.prototype.rotate = function (first) {

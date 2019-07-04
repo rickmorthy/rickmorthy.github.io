@@ -109,4 +109,14 @@ class Model {
     ]
     return html;
   }
+  // footer(){
+  //   return [
+  //     '<footer class="footer">',
+  //       '<div class="container-fluid ">',
+  //         'github.com/rickmorthy',
+  //         '<i class="far fa-copyright"></i>',
+  //       '</div>',
+  //     '</footer>'
+  //   ].join('');
+  // }
 };
