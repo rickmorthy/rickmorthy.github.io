@@ -96,12 +96,23 @@ class Model {
     return history_menu.join('');
 
   }
+
+  history_container(content,size,hidden){
+    console.log(hidden);
+    return [
+      '<div class="container-fluid col-12 history hidden">',
+      content,
+      '</div>'
+    ].join('');
+  }
+
   settings(label,status) {
+    console.log(label);
     var checked = status === true ? 'checked' : '',
         strip_label = label.upCase();
     var html = [
       '<div class="form-check">',
-      '<input class="form-check-input" type="checkbox"  notid="'+label+'" '+checked+'>',
+      '<input class="form-check-input" type="checkbox"  id="'+label+'" '+checked+'>',
       '<label class="form-check-label" for="check'+label+'">',
       strip_label,
       '</label>',

@@ -5,13 +5,13 @@
     // this.tmp_arr = [];
     this.prop_ignore = [ // ignore properties in global_container when restore data to inputs
       'history',
-      'key_pressed',
-      'settings'
+      'key_pressed'
     ]
   }
   fillUp(json) { // uploads result saved in cookies into widget
     // var cookie = JSON.parse();
     global_container = JSON.parse(json);
+    console.log(json);
     for (var elem in global_container) {
       if (global_container.hasOwnProperty(elem) && Object.keys(global_container).findMatch(this.prop_ignore)) {
         var input = document.querySelectorAll('.widget' + elem + ' input'),
@@ -93,6 +93,7 @@
     }
   }
   prepend_new_cookie(tmp){
+    console.log(tmp);
     var element = document.querySelectorAll('.history table'),
         table = jQuery.parseHTML(new Model().history([tmp]));
         table[0].style.opacity = 0;
@@ -100,8 +101,11 @@
           element.length-1 === i ? node.parentNode.removeChild(node): true;
         })
 
-    $(window.innerWidth > 998 ? '.history' : '.sm-history').prepend(table);
-    $(window.innerWidth > 998 ? '.history' : '.sm-history' +' table:first-child').fadeTo('slow',1);
+    $('.history').prepend(table);
+    $('.history table:first-child').fadeTo('slow',1);
+  }
+  save_global_container(){
+    cookies.set('bit2bit', JSON.stringify(global_container));
   }
 
 }

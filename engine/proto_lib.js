@@ -26,7 +26,8 @@ Array.prototype.findMatch = function (array) {
   }
 };
 String.prototype.upCase = function () {
-  var tmp = '';
+  var tmp = String('');
   tmp = this.charAt(0).toUpperCase() + this.slice(1);
-  return tmp.replace('_',' ');
+  tmp = tmp.replace(/_/gi,' ');
+  return tmp;
 }

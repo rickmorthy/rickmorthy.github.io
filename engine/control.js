@@ -25,42 +25,31 @@ class Control {
     widget += this.model.closure('end');
     widget = jQuery.parseHTML(widget);
     this.widget_action(widget);
-    // this.add_cookie_action(widget);
-    // console.log(node);
-    // node[0].
-
     return widget;
   };
 
   history_widget() {
+    var widget,
+        size = '12',
+        hidden = 'hidden';
     if (window.navigator.cookieEnabled === true) {
-      if (cookies.get('bit2bit') !== undefined && JSON.parse(cookies.get('bit2bit')).hasOwnProperty('history')) {
-        var cookie_history_arr = JSON.parse(cookies.get('bit2bit')).history;
-        $('#history').on('click',function() {
-          if (append_history === '.history') {
-            $('#main').toggleClass('col-12').toggleClass('col-6',true);
-          }
-          $(append_history).toggleClass('hidden');
-        })
-        if (global_container.settings.history === true) {
-          $('.history, .sm-history').removeClass('hidden');
-        }
-        return jQuery.parseHTML(this.model.history(cookie_history_arr));
+      if(global_container.hasOwnProperty('history') && Object.keys(global_container.history).length > 0){
+        var cookie_history_arr = global_container.history;
+        widget = this.model.history_container(this.model.history(cookie_history_arr),size);
+        widget = jQuery.parseHTML(widget);
       } else {
-        return '';
+        widget = '';
       }
+      this.history_action();
+      return widget;
     }
   }
   settings_widget(){
     var widget = [],
         fields = {
           "history":"",
-          "remember_results":""
-        },
-        parsed_widget;
-        if (window.innerWidth < 998) {
-          $('#settings').parent().removeClass('dropright').addClass('dropleft');
-        }
+          "dont_remember_results":""
+        };
     if (!global_container.hasOwnProperty('settings') || Object.keys(global_container.settings).length === 0) {
       global_container.settings = fields;
     }
@@ -69,17 +58,18 @@ class Control {
         widget.push(...this.model.settings(elem,global_container.settings[elem]));
       }
     }
-    $('#settings').on('click',function() {
-      // $('.sm-history').toggleClass('hidden');
-    widget = jQuery.parseHTML(widget.join(''));
-    })
+    // $('#settings').on('click',function() {
+    //   // $('.sm-history').toggleClass('hidden');
+    // widget = jQuery.parseHTML(widget.join(''));
+    // })
     widget = jQuery.parseHTML(widget.join(''));
     this.settings_action(widget);
-    // console.log(jQuery.parseHTML(widget.join('')));
     return widget;
   }
 
-
+/////////////////////////////
+//  actions attache handlers to the events
+////////////////////////////
   widget_action(widget) {
     var node = $(widget).find('input:first'),
       action = new Actions(node[0], this.id),
@@ -96,12 +86,21 @@ class Control {
   settings_action(widget){
     var node = $(widget).find('input');
     $(node).click(function() {
-      global_container.settings[this.attributes.notid.value] = this.checked;
+      // console.dir(global_container.settings);
+      if (global_container.hasOwnProperty('settings')) {
+        global_container.settings[this.attributes.id.value] = this.checked;
+      }else{
+        global_container.settings[this.attributes.id.value] = this.checked;
+        global_container.settings = {};
+      }
+      // console.log(global_container.settings[this.attributes.id.value]);
       cookies.set('bit2bit',JSON.stringify(global_container));
     })
   }
 
-  simple_widget(widget){
-     return jQuery.parseHTML(this.model.__proto__[widget]());
+  history_action(){
+    $('#history').on('click',function() {
+      $('.hidden').toggleClass('hidden');
+    })
   }
 }

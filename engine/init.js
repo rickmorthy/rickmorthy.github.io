@@ -14,4 +14,5 @@
     "engine/view.js"
   ];
   assetBundle.scriptLoader();// located in proto_lib.js
-})();
+
+  })();
