@@ -9,6 +9,7 @@ class Model {
       this.numeral = Object.values(this.arr);
       this.size = obj.size;
       this.id = obj.id; //id of current widget
+      this.title = obj.title;
       this.method = ` '${this.id}'`;
     }
 
@@ -55,7 +56,7 @@ class Model {
   closure(state) {
     switch (state) {
       case 'start':
-        return '<div class="widget' + this.id + ' col-' + this.size + '">';
+        return '<div class="widget' + this.id + ' col-' + this.size + '"><h6 class="col-12 align-self-center module-row" >'+this.title+'</h6>';
         break;
       case 'end':
         return '</div>';

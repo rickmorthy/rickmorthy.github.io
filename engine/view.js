@@ -23,6 +23,7 @@ $('.main-frame').prepend(new Control({
   obj: twos_conv,
   size: '6',
   id: '_twos_conversion',
+  title:'Twos complement converter'
 }).widget());
 
 /////////////////////////////
@@ -32,6 +33,7 @@ $('.main-frame').prepend(new Control({
   obj: reg_con,
   size: '6',
   id: '_conversion',
+  title:'Dec Bin Hex Oct convertion'
 }).widget());
 
 

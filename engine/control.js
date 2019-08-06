@@ -2,12 +2,13 @@ class Control {
   constructor(obj) {
     if (obj) {
       this.object = obj.obj;
-      var global_arr = this.object; //for maping(construct object not in scope for map func)
+      // var global_arr = this.object; //for maping(construct object not in scope for map func)
       this.key = Object.keys(this.object); //Numeral system in word ex. Decimal
       this.values = Object.values(this.object); //Numeral system in number ex. 16
 
       this.size = obj.size;
       this.id = obj.id;
+      this.title = obj.title;
       this.length = Object.keys(this.key).length;
       this.collection_of_attr;
     }
